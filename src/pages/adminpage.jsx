@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { FaPlus, FaPlay ,FaSearch} from "react-icons/fa";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { MdOutlineKeyboardVoice } from "react-icons/md";
-import { CiSearch } from "react-icons/ci";
+import { useState } from "react"
+import { FaPlus, FaPlay, FaSearch } from "react-icons/fa"
+import { BsThreeDotsVertical } from "react-icons/bs"
+import { MdOutlineKeyboardVoice } from "react-icons/md"
+
 export default function SessionPage() {
-  const [selectedSession, setSelectedSession] = useState("13/02/2025 4:26pm");
+  const [selectedSession, setSelectedSession] = useState("13/02/2025 4:26pm")
 
   const sessions = [
     { id: 1, title: "Untitled session", date: "13/02/2025 4:26pm" },
     { id: 2, title: "Untitled session", date: "11/02/2025" },
     { id: 3, title: "Untitled session", date: "02/11 12:20am" },
-  ];
+  ]
 
   return (
     <div className="flex h-screen w-screen bg-gray-100">
@@ -19,35 +19,38 @@ export default function SessionPage() {
         <h2 className="text-lg font-semibold mb-4">Sessions</h2>
         <hr></hr>
         <FaSearch className="absolute left-2 top-18   text-gray-400" />
-        <input type="text" placeholder="Search" className="border-2 border-gray-500 ml-3 pr-8 mb-3 mt-2 "></input>
+        <input
+          type="text"
+          placeholder="Search"
+          className="border-2 border-gray-500 ml-3 pr-8 mb-3 mt-2 "
+        ></input>
         <div className="flex ">
-          <button className="relative ">
-          past
-          </button>
-          <button className="relative ">
-           schedule
-          </button>
-          </div>
-          <hr></hr>
+          <button className="relative ">past</button>
+          <button className="relative ">schedule</button>
+        </div>
+        <hr></hr>
         {sessions.map((session) => (
           <div
             key={session.id}
             className={`p-2 cursor-pointer rounded-lg ${
-              selectedSession === session.date ? "bg-blue-200" : "hover:bg-gray-200"
+              selectedSession === session.date
+                ? "bg-blue-200"
+                : "hover:bg-gray-200"
             }`}
             onClick={() => setSelectedSession(session.date)}
           >
             <p className="text-sm font-medium">{session.title}</p>
             <p className="text-xs text-gray-500">{session.date}</p>
           </div>
-          
         ))}
         <div className="flex ">
-        <button
+          <button
             type="submit"
-            className=" flex relative top-74 right-4 text-white">
-           <MdOutlineKeyboardVoice className="mr-1" /> Tidy Up
-          </button></div>
+            className=" flex relative top-74 right-4 text-white"
+          >
+            <MdOutlineKeyboardVoice className="mr-1" /> Tidy Up
+          </button>
+        </div>
       </div>
 
       {/* Main Content */}
@@ -75,7 +78,10 @@ export default function SessionPage() {
             <h3 className="font-semibold">Subjective:</h3>
             <ul className="list-disc pl-5 text-sm text-gray-700">
               <li>Reports feeling sad due to ongoing situation in Palestine</li>
-              <li>Describes feeling exhausted, tired, experiencing frequent illness</li>
+              <li>
+                Describes feeling exhausted, tired, experiencing frequent
+                illness
+              </li>
               <li>Reports survivor’s guilt regarding safety</li>
               <li>Mentally unstable while watching events</li>
               <li>Reports being criticized for appearance</li>
@@ -85,7 +91,9 @@ export default function SessionPage() {
 
           <div className="mt-4">
             <h3 className="font-semibold">Past Medical History:</h3>
-            <p className="text-sm text-gray-700">Reports recent illness lasting 2 weeks</p>
+            <p className="text-sm text-gray-700">
+              Reports recent illness lasting 2 weeks
+            </p>
           </div>
 
           <div className="mt-4">
@@ -108,5 +116,5 @@ export default function SessionPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
