@@ -32,6 +32,7 @@ export async function startPreRecordedJob(audioUrl) {
     diarization: true,
     detect_language: true,
     enable_code_switching: false,
+    sentiment_analysis: true,
   };
 
   const options = {
@@ -43,13 +44,20 @@ export async function startPreRecordedJob(audioUrl) {
     body: JSON.stringify(payload),
   };
 
-  const response = await fetch(API_PRE_RECORDED_URL, options);
-  const data = await response.json();
+  try {
+    const response = await fetch(API_PRE_RECORDED_URL, options);
 
-  if (!response.ok) {
-    throw new Error(data.message || "Failed to start processing");
+    // Check if the response is valid before parsing JSON
+    if (!response.ok) {
+      const errorData = await response.json(); // Get error details
+      throw new Error(errorData.message || "Failed to start processing");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error starting pre-recorded job:", error.message);
+    throw error;
   }
-  return data;
 }
 
 export async function getPreRecordedResult(jobId) {
