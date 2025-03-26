@@ -11,11 +11,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Register />} />
-          <Route path="/login-patient" element={<Login />} />
-          <Route path="/login-admin" element={<Login_admin />} />
-          <Route path="/SessionNotes" element={<SessionNotes />} />
+          <Route path="/patient-portal-login" element={<Login />} />
+          <Route path="/admin-portal" element={<Login_admin />} />
+          <Route path="/session-notes" element={<SessionNotes />} />
           <Route
-            path="/login-patient/AudioTranscriber"
+            path="/patient-portal-login/AudioTranscriber"
             element={<AudioTranscriber />}
           />
         </Routes>
