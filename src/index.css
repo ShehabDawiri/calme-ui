@@ -1,9 +1,95 @@
 @import "tailwindcss";
 
-#root {
-  max-width: 1280px;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* @import "tailwindcss/preflight"; */
+
+:root {
+  --direction: ltr;
 }
 
+[dir="rtl"] {
+  --direction: rtl;
+}
+
+@layer base {
+  body {
+    @apply bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200;
+    transition: color 0.3s, background-color 0.3s;
+    direction: var(--direction);
+  }
+}
+
+@layer utilities {
+  /* Text alignment */
+  .text-start {
+    text-align: start;
+  }
+  .text-end {
+    text-align: end;
+  }
+
+  /* Float directions */
+  .float-start {
+    float: left;
+  }
+  .float-end {
+    float: right;
+  }
+
+  /* Margin/padding logical properties */
+  .ms-1 {
+    margin-inline-start: 0.25rem;
+  }
+  .me-1 {
+    margin-inline-end: 0.25rem;
+  }
+  .ps-1 {
+    padding-inline-start: 0.25rem;
+  }
+  .pe-1 {
+    padding-inline-end: 0.25rem;
+  }
+
+  /* Flexbox RTL support */
+  .flex-row {
+    flex-direction: row;
+  }
+  .flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  /* Direction-aware positioning */
+  .start-0 {
+    left: 0;
+  }
+  .end-0 {
+    right: 0;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes underline {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-underline {
+  animation: underline 1s ease-out forwards;
+}
