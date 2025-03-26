@@ -1,0 +1,9 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200;
+    transition: color 0.3s, background-color 0.3s;
+  }
+}
