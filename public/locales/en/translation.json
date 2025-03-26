@@ -72,7 +72,22 @@
     "recording": "Recording...",
     "paused": "Paused",
     "readyToRecord": "Ready to record",
-    "recordingSaved": "Recording saved successfully!"
+    "recordingSaved": "Recording saved successfully!",
+    "audioRecorder": {
+      "errors": {
+        "uploading": "Uploading audio file...",
+        "uploadFailed": "Upload failed: {{errorMessage}}",
+        "generalError": "An error occurred during processing",
+        "processingError": "Error during audio processing",
+        "emptyTranscript": "No transcript generated",
+        "uploadComplete": "Processing complete"
+      },
+      "status": {
+        "startingProcessing": "Starting audio processing...",
+        "processing": "Processing audio..."
+      },
+      "transcript": "Transcript"
+    }
   },
   "navItem": {
     "home": "Home",

@@ -72,7 +72,22 @@
     "recording": "מקליט...",
     "paused": "בהשהיה",
     "readyToRecord": "מוכן להקלטה",
-    "recordingSaved": "ההקלטה נשמרה בהצלחה!"
+    "recordingSaved": "ההקלטה נשמרה בהצלחה!",
+    "audioRecorder": {
+      "errors": {
+        "uploading": "מעלה קובץ אודיו...",
+        "uploadFailed": "העלאה נכשלה: {{errorMessage}}",
+        "generalError": "אירעה שגיאה במהלך העיבוד",
+        "processingError": "שגיאה בעיבוד אודיו",
+        "emptyTranscript": "לא נוצר תמליל",
+        "uploadComplete": "העיבוד הושלם"
+      },
+      "status": {
+        "startingProcessing": "מתחיל בעיבוד אודיו...",
+        "processing": "מעבד אודיו..."
+      },
+      "transcript": "תמליל"
+    }
   },
   "navItem": {
     "home": "בית",

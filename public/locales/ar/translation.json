@@ -71,7 +71,22 @@
     "paused": "متوقف مؤقتًا",
     "recording": "جارٍ التسجيل",
     "readyToRecord": "جاهز للتسجيل",
-    "recordingSaved": "تم حفظ التسجيل"
+    "recordingSaved": "تم حفظ التسجيل",
+    "audioRecorder": {
+      "errors": {
+        "uploading": "جاري رفع الملف الصوتي...",
+        "uploadFailed": "فشل الرفع: {{errorMessage}}",
+        "generalError": "حدث خطأ أثناء المعالجة",
+        "processingError": "خطأ أثناء معالجة الصوت",
+        "emptyTranscript": "لم يتم إنشاء نص",
+        "uploadComplete": "اكتملت المعالجة"
+      },
+      "status": {
+        "startingProcessing": "بدء معالجة الصوت...",
+        "processing": "جاري معالجة الصوت..."
+      },
+      "transcript": "النص"
+    }
   },
   "navItem": {
     "home": "الصفحة الرئيسية",
