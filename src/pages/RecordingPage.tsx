@@ -10,12 +10,14 @@ import {
   FiPlay,
   FiSquare,
   FiSettings,
-  FiChevronDown,
   FiCheckCircle,
   FiAlertCircle,
   FiRefreshCcw,
+  FiUpload,
 } from "react-icons/fi";
 import Select from "react-select";
+import { processAudio } from "../api/gladiaAPI/audioTranscriber";
+import { useThemeContext } from "../context/ThemeContext";
 
 const RecordingPage = () => {
   const { t } = useTranslation();
@@ -31,10 +33,13 @@ const RecordingPage = () => {
   const animationRef = useRef<number | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
-  const [isDark, setIsDark] = useState<boolean>(
-    document.documentElement.classList.contains("dark")
-  );
 
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [transcript, setTranscript] = useState<string | null>(null);
+  const [processingStep, setProcessingStep] = useState<string | null>(null);
+  const { isDarkMode } = useThemeContext();
   // Initialize audio context and devices
   useEffect(() => {
     const setupAudio = async () => {
@@ -82,15 +87,15 @@ const RecordingPage = () => {
       canvas.width,
       canvas.height
     );
-    gradient.addColorStop(0, isDark ? "#3B82F6" : "#2563EB");
-    gradient.addColorStop(0.5, isDark ? "#2563EB" : "#1D4ED8");
-    gradient.addColorStop(1, isDark ? "#1D4ED8" : "#1E40AF");
+    gradient.addColorStop(0, isDarkMode ? "#3B82F6" : "#2563EB");
+    gradient.addColorStop(0.5, isDarkMode ? "#2563EB" : "#1D4ED8");
+    gradient.addColorStop(1, isDarkMode ? "#1D4ED8" : "#1E40AF");
 
     const draw = () => {
       animationRef.current = requestAnimationFrame(draw);
       analyserRef.current?.getByteFrequencyData(dataArray);
 
-      ctx.fillStyle = isDark ? "#1F2937" : "#F9FAFB";
+      ctx.fillStyle = isDarkMode ? "#1F2937" : "#F9FAFB";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.lineWidth = 2;
@@ -167,6 +172,14 @@ const RecordingPage = () => {
     };
   }, [isRecording, isPaused]);
 
+  // File upload handler
+  const handleUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setAudioChunks([event.target.files[0]]);
+      setElapsedTime(0);
+    }
+  };
+
   // Action handlers
   const handleSave = () => {
     if (audioChunks.length === 0) return;
@@ -194,22 +207,21 @@ const RecordingPage = () => {
   const handleSendToProcessing = async () => {
     if (audioChunks.length === 0) return;
     const blob = new Blob(audioChunks, { type: "audio/webm" });
-    const formData = new FormData();
-    formData.append("file", blob, "recording.webm");
 
     try {
-      const response = await fetch("/api/process-audio", {
-        method: "POST",
-        body: formData,
-      });
-      if (response.ok) {
-        alert("File sent for processing!");
-      } else {
-        alert("Error processing file.");
-      }
-    } catch (error) {
-      console.error("Processing error:", error);
-      alert("Error processing file.");
+      setProcessingStep(t("audioRecorder.errors.uploading"));
+      setErrorMessage(null);
+      setTranscript(null);
+
+      const transcript = await processAudio(blob, handleProcessingUpdate, t);
+      console.log("Transcript:", transcript);
+
+      setProcessingStep(t("audioRecorder.errors.uploadComplete"));
+      setTranscript(transcript);
+    } catch (error: any) {
+      console.error("Error during processing:", error);
+      setErrorMessage(error.message || t("audioRecorder.errors.generalError"));
+      setProcessingStep(null);
     }
   };
 
@@ -228,6 +240,48 @@ const RecordingPage = () => {
       console.error("Error refreshing mics:", error);
     }
   };
+
+  const handleProcessingUpdate = (message: string) => {
+    setProcessingStep(message);
+  };
+
+  const renderProcessingFeedback = () => (
+    <AnimatePresence>
+      {(processingStep || errorMessage || transcript) && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="mt-8 p-4 rounded-lg border border-gray-200 dark:border-gray-700"
+        >
+          {errorMessage && (
+            <div className="flex items-center text-red-600 dark:text-red-400 mb-4">
+              <FiAlertCircle className="mr-2" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
+          {processingStep && !errorMessage && (
+            <div className="flex items-center text-blue-600 dark:text-blue-400 mb-4">
+              <FiRefreshCcw className="mr-2 animate-spin" />
+              <span>{processingStep}</span>
+            </div>
+          )}
+
+          {transcript && (
+            <div className="mt-4">
+              <h3 className="text-lg font-semibold mb-2 dark:text-white">
+                {t("audioRecorder.transcript")}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                {transcript}
+              </p>
+            </div>
+          )}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 
   // Main UI
   return (
@@ -260,22 +314,22 @@ const RecordingPage = () => {
               styles={{
                 control: (base) => ({
                   ...base,
-                  backgroundColor: isDark ? "#1F2937" : "white",
-                  borderColor: isDark ? "#4B5563" : "#E5E7EB",
+                  backgroundColor: isDarkMode ? "#1F2937" : "white",
+                  borderColor: isDarkMode ? "#4B5563" : "#E5E7EB",
                   boxShadow: "none",
                   "&:hover": {
-                    borderColor: isDark ? "#64748b" : "#94A3B8",
+                    borderColor: isDarkMode ? "#64748b" : "#94A3B8",
                   },
                 }),
                 menu: (base) => ({
                   ...base,
-                  backgroundColor: isDark ? "#1F2937" : "white",
-                  borderColor: isDark ? "#4B5563" : "#E5E7EB",
+                  backgroundColor: isDarkMode ? "#1F2937" : "white",
+                  borderColor: isDarkMode ? "#4B5563" : "#E5E7EB",
                 }),
                 option: (base, { isFocused }) => ({
                   ...base,
                   backgroundColor: isFocused
-                    ? isDark
+                    ? isDarkMode
                       ? "#4B5563"
                       : "#BFDBFE"
                     : "transparent",
@@ -313,12 +367,35 @@ const RecordingPage = () => {
 
           {/* Control Panel */}
           <div className="flex flex-wrap justify-center gap-8 mb-10">
+            {!isRecording && audioChunks.length === 0 && (
+              <>
+                {/* Upload Button */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => fileInputRef.current?.click()}
+                  className="p-10 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+                  title={t("record.uploadAudio")}
+                >
+                  <FiUpload className="text-4xl" />
+                </motion.button>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  accept="audio/*"
+                  onChange={handleUploadFile}
+                  className="hidden"
+                />
+              </>
+            )}
+
             {!isRecording ? (
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={startRecording}
                 className="p-10 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+                title={t("record.startRecording")}
               >
                 <FiMic className="text-4xl" />
               </motion.button>
@@ -329,6 +406,7 @@ const RecordingPage = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setIsPaused(!isPaused)}
                   className="p-6 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+                  title={isPaused ? t("record.resume") : t("record.pause")}
                 >
                   {isPaused ? (
                     <FiPlay className="text-3xl" />
@@ -341,6 +419,7 @@ const RecordingPage = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={stopRecording}
                   className="p-6 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+                  title={t("record.stopRecording")}
                 >
                   <FiSquare className="text-3xl" />
                 </motion.button>
@@ -354,6 +433,7 @@ const RecordingPage = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={handleSave}
                   className="p-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+                  title={t("record.saveRecording")}
                 >
                   <FiSave className="text-3xl" />
                 </motion.button>
@@ -362,6 +442,7 @@ const RecordingPage = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={handleDelete}
                   className="p-6 bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+                  title={t("record.deleteRecording")}
                 >
                   <FiTrash2 className="text-3xl" />
                 </motion.button>
@@ -370,6 +451,7 @@ const RecordingPage = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={handlePlay}
                   className="p-6 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+                  title={t("record.playRecording")}
                 >
                   <FiPlay className="text-3xl" />
                 </motion.button>
@@ -378,6 +460,7 @@ const RecordingPage = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={handleSendToProcessing}
                   className="p-6 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+                  title={t("record.processRecording")}
                 >
                   <FiSettings className="text-3xl" />
                 </motion.button>
@@ -430,6 +513,8 @@ const RecordingPage = () => {
               )}
             </AnimatePresence>
           </div>
+
+          {renderProcessingFeedback()}
         </motion.div>
       </div>
     </div>
