@@ -29,6 +29,7 @@ export async function startPreRecordedJob(audioUrl) {
   const payload = {
     audio_url: audioUrl,
     translation: false,
+    diarization: true,
     detect_language: true,
     enable_code_switching: false,
   };
