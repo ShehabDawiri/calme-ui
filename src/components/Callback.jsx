@@ -1,39 +1,38 @@
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import axiosInstance from "../api/axiosInstance";
 
 const Callback = () => {
-  const { isAuthenticated, getIdTokenClaims, isLoading, error } = useAuth0();
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const saveTokenAndRedirect = async () => {
+    const handleAuthentication = async () => {
       if (isAuthenticated) {
         try {
-          const tokenClaims = await getIdTokenClaims();
-          const token = tokenClaims?.__raw;
-
-          if (token) {
-            localStorage.setItem("token", token); // Save the actual token
-            console.log("Token saved:", token);
+          const token = await getAccessTokenSilently();
+          console.log("Access token:", token);
+          document.cookie = `auth_token=${token}; path=/; secure; samesite=strict;`;
+          const response = await axiosInstance.get("/protected");
+          if (response.status === 200) {
+            const userData = response.data;
+            console.log("User data:", userData);
+          } else if (response.status === 401) {
+            navigate("/login-patient");
           }
-
-          navigate("/home"); // Redirect to home page
-        } catch (err) {
-          console.error("Failed to fetch token:", err);
+          console.log({ response });
+          navigate("/home");
+        } catch (error) {
+          console.error("Authentication error:", error);
         }
       }
-
-      if (error) console.error("Login failed:", error);
-
-      if (!isLoading && !isAuthenticated) navigate("/login");
     };
 
-    saveTokenAndRedirect();
-  }, [isAuthenticated, getIdTokenClaims, isLoading, error, navigate]);
+    handleAuthentication();
+  }, [isAuthenticated, getAccessTokenSilently, navigate]);
 
-  return <h2>Loading...</h2>;
+  return <div>Loading...</div>;
 };
 
 export default Callback;
