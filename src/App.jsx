@@ -17,6 +17,9 @@ import HomePage from "./pages/HomePage";
 import Callback from "./components/Callback";
 import RecordingPage from "./pages/RecordingPage";
 
+// Custom namespace for Auth0 roles (should match Auth0 Actions)
+const ROLE_NAMESPACE = `${import.meta.env.VITE_AUTH0_AUDIENCE}/roles`;
+
 // Layout wrapper for authenticated pages
 const AuthLayout = () => (
   <Layout>
@@ -25,12 +28,26 @@ const AuthLayout = () => (
 );
 
 // Protected Route Wrapper
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuth0();
+const ProtectedRoute = ({ children, requiredRoles }) => {
+  const { isAuthenticated, isLoading, user } = useAuth0();
 
   if (isLoading) return <div>Loading...</div>;
 
-  return isAuthenticated ? children : <Navigate to="/" />;
+  if (!isAuthenticated) return <Navigate to="/" />;
+
+  // Get user roles from ID token
+  const userRoles = user?.[ROLE_NAMESPACE] || [];
+  console.log({ userRoles });
+
+  // Check if user has at least one required role
+  if (
+    requiredRoles &&
+    !userRoles.some((role) => requiredRoles.includes(role))
+  ) {
+    return <Navigate to="/home" />; // Redirect unauthorized users
+  }
+
+  return children;
 };
 
 function App() {
@@ -46,6 +63,7 @@ function App() {
           path="/login-patient/AudioTranscriber"
           element={<AudioTranscriber />}
         />
+
         {/* Protected routes */}
         <Route element={<AuthLayout />}>
           <Route
@@ -75,7 +93,7 @@ function App() {
           <Route
             path="/SessionNotes"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute requiredRoles={["admin"]}>
                 <SessionNotes />
               </ProtectedRoute>
             }
