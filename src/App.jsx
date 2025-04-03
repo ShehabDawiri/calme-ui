@@ -6,12 +6,10 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import SessionNotes from "./pages/adminpage";
+import AdminDashboard from "./pages/protected/AdminDashboard";
 import Register from "./pages/register";
 import AudioTranscriber from "./pages/Audio";
 import Login_admin from "./pages/Login_admin";
-import Layout from "./components/Layout";
-import HomePage from "./pages/Homepage";
 
 // Layout wrapper for authenticated pages
 const AuthLayout = () => (
@@ -34,8 +32,8 @@ function App() {
     <Router>
       <Routes>
         {/* Public routes */}
-        {/* <Route path="/" element={<WelcomePage />} /> */}
-        <Route path="/" element={<AuthLayout />} />
+        <Route path="/" element={<AdminDashboard />} />
+        {/* <Route path="/" element={<AuthLayout />} /> */}
         <Route path="/login-admin" element={<Login_admin />} />
         <Route path="/register" element={<Register />} />
         <Route
@@ -65,7 +63,7 @@ function App() {
             path="/SessionNotes"
             element={
               <ProtectedRoute>
-                <SessionNotes />
+                <AdminDashboard />
               </ProtectedRoute>
             }
           />
