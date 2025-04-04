@@ -3,7 +3,7 @@
 @import "tw-animate-css";
 
 :root {
-  // Color palette *needs to be migrated to the tailwind theme*
+  /*  Color palette *needs to be migrated to the tailwind theme* */
   
   --color-primary-100: #fdfefe; /* Lightest shade */
   --color-primary-200: #d1d2d3; /* Light pink */

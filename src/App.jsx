@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import TherapyChat from "./pages/user/TherapyChat";
+import Login from "./pages/auth/Login";
 
 function App() {
   return (
