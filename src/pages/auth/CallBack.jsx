@@ -26,7 +26,7 @@ function Callback() {
         //Dummy response
         const response = { status: 200 };
         if (response.status === 200) {
-          navigate("/dashboard");
+          navigate("/");
         }
       } catch (error) {
         console.error("Authentication error:", error);
