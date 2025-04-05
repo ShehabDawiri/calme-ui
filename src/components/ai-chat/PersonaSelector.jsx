@@ -26,7 +26,7 @@ export const PersonaSelector = ({ selectedId, onSelect, mobile }) => {
             <img
               src={persona.avatar}
               alt={persona.name}
-              className="h-12 w-12 rounded-full object-cover md:h-10 md:w-10"
+              className="h-12 w-12 rounded-full object-cover md:h-16 md:w-16"
             />
             {!mobile && (
               <div className="text-left">
@@ -40,20 +40,6 @@ export const PersonaSelector = ({ selectedId, onSelect, mobile }) => {
           </button>
         ))}
       </div>
-
-      {/* Mobile-only Description */}
-      {mobile && selectedPersona && (
-        <div className="border-t border-gray-200 p-4">
-          <div className="text-center">
-            <p className="text-sm font-medium text-gray-800">
-              {selectedPersona.name}
-            </p>
-            <p className="mt-1 text-xs text-gray-600">
-              {selectedPersona.description}
-            </p>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
