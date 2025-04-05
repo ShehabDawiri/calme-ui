@@ -20,9 +20,7 @@ export const ChatInput = ({
   };
 
   return (
-    <div
-      className={`border-[var(--border)] bg-[var(--background)] p-4 md:p-6 ${className}`}
-    >
+    <div className={`bg-[var(--background)] p-4 md:p-6 ${className}`}>
       <div className="flex gap-4">
         <input
           className="flex-1 rounded-lg border border-[var(--primary-200)] bg-[var(--primary-100)] px-4 py-3 text-sm text-[var(--primary-500)] placeholder-[var(--primary-300)] focus:ring-2 focus:ring-[var(--primary-400)] focus:outline-none"

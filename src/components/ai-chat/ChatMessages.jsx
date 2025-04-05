@@ -11,9 +11,9 @@ export const MessageBubble = ({ message, isUser }) => (
     <div
       className={`max-w-[70%] rounded-[var(--radius)] px-5 py-4 text-sm shadow-lg transition-colors duration-200 ${
         isUser
-          ? "bg-[var(--color-primary-500)] text-[var(--color-primary-100)]"
-          : "bg-[var(--color-primary-200)] text-[var(--color-primary-500)]"
-      }`}
+          ? "bg-[var(--color-secondary)] text-[var(--color-primary-100)]"
+          : "bg-[var(--background)] text-[var(--foreground)]"
+      } `}
     >
       <p className="leading-relaxed">{message}</p>
     </div>
@@ -22,14 +22,14 @@ export const MessageBubble = ({ message, isUser }) => (
 
 export const ChatMessages = ({ children }) => (
   <ScrollArea.Root className="h-full w-full overflow-hidden">
-    <ScrollArea.Viewport className="h-full w-full bg-[var(--color-primary-100)] px-6 py-8">
+    <ScrollArea.Viewport className="h-full w-full bg-[var(--card)] px-6 py-8">
       <div className="flex flex-col gap-3">{children}</div>
     </ScrollArea.Viewport>
     <ScrollArea.Scrollbar
       orientation="vertical"
       className="z-10 flex touch-none p-1 transition-colors duration-200 ease-out select-none hover:bg-[var(--color-primary-300)] data-[orientation=vertical]:w-3"
     >
-      <ScrollArea.Thumb className="relative flex-1 rounded-full bg-[var(--color-primary-400)] before:absolute before:top-1/2 before:left-1/2 before:h-full before:w-full before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']" />
+      <ScrollArea.Thumb className="relative flex-1 rounded-full bg-[var(--color-secondary)] before:absolute before:top-1/2 before:left-1/2 before:h-full before:w-full before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']" />
     </ScrollArea.Scrollbar>
   </ScrollArea.Root>
 );
