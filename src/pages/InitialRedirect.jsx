@@ -22,7 +22,7 @@ export function InitialRedirect() {
   }
 
   if (roles.includes("user")) {
-    return <Navigate to="/therapy-chat" replace />;
+    return <Navigate to="/chat" replace />;
   }
 
   // ✅ Fallback: Authenticated but no matching role
