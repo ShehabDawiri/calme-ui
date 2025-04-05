@@ -1,8 +1,4 @@
-import {
-  SidebarContent,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/Sidebar";
+import { SidebarContent, SidebarProvider } from "@/components/ui/Sidebar";
 import { Sidebar } from "@/components/ui/SideBar";
 import { Mic } from "lucide-react";
 import { FaSearch } from "react-icons/fa";
@@ -45,7 +41,6 @@ export default function AdminDashboardLayout({ children }) {
         </SidebarContent>
       </Sidebar>
       <main className="flex h-screen w-full flex-col overflow-hidden">
-        <SidebarTrigger className={"ml-3"} />
         {children}
       </main>
     </SidebarProvider>

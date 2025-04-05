@@ -22,7 +22,7 @@ const SessionsList = () => {
     <div className="flex flex-col justify-start">
       <div className="flex font-semibold">
         <Tabs defaultValue="schedueld" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 rounded-none">
+          <TabsList className="bg-primary-100 border-primary-200 grid h-fit w-full grid-cols-2 rounded-none border-t-1 border-b-1 py-3">
             <TabsTrigger value="schedueld">Schedueld</TabsTrigger>
             <TabsTrigger value="past">Past</TabsTrigger>
           </TabsList>

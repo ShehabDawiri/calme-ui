@@ -1,11 +1,15 @@
 import { Play, Mic, PlusIcon, Calendar, Languages, User } from "lucide-react";
+import { SidebarTrigger } from "@/components/ui/SideBar";
+import { Separator } from "@/components/ui/Separator";
 import React from "react";
 
 const Header = () => {
   return (
-    <div className="flex h-18 w-full items-center justify-between bg-[var(--color-primary-100)] px-4 shadow-lg">
-      <div className="flex h-full w-full items-center justify-between">
-        <div className="left flex h-full items-center gap-2 font-normal">
+    <div className="bg-primary-100 row-span-2 flex w-full items-center justify-between px-4">
+      <div className="flex h-fit w-full items-center justify-between">
+        <div className="left flex h-fit items-center gap-2 font-normal">
+          <SidebarTrigger className="bg-accent" />
+          <Separator orientation="vertical" className="py-4" />
           <button
             type="button"
             className="flex items-center justify-center gap-3 rounded-md border-[1px] border-[var(--color-primary-200)] bg-[var(--color-primary-100)] px-4 py-2 text-[var(--color-primary-500)]"

@@ -1,17 +1,136 @@
 import React from "react";
-import { Separator } from "../ui/Separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
+import { Mic, MessageCircle, NotebookPen } from "lucide-react";
 
 const TabMenu = () => {
   return (
-    <>
-      <Separator />
-      <div className="flex h-16 w-full items-center justify-between bg-[var(--color-primary-100)] px-4 shadow-lg">
-        <div className="flex h-full w-full items-center justify-between">
-          <div className="left flex h-full items-center gap-2 font-normal"></div>
+    <Tabs defaultValue="transcript" className="row-span-25 h-full w-full">
+      <TabsList className="bg-primary-100 border-primary-200 grid h-fit w-full grid-cols-3 rounded-none border-t-1 border-b-1 py-3">
+        <div className="flex h-full items-center justify-center gap-2 px-4">
+          <TabsTrigger value="transcript">
+            <Mic size={16} /> Transcript
+          </TabsTrigger>
+          <TabsTrigger value="context">
+            <MessageCircle size={16} /> Context
+          </TabsTrigger>
+          <TabsTrigger value="note">
+            <NotebookPen size={16} /> Note
+          </TabsTrigger>
         </div>
-      </div>
-      <Separator />
-    </>
+      </TabsList>
+      <TabsContent value="transcript" className="h-full w-full">
+        {/* temp content for development purposes only */}
+        <div className="wrapper h-full w-full overflow-y-scroll">
+          <div className="rounded-md px-4">
+            <div className="mt-4">
+              <h3 className="font-semibold">Subjective:</h3>
+              <ul className="list-disc pl-5 text-sm text-gray-700">
+                <li>
+                  Reports feeling sad due to ongoing situation in Palestine
+                </li>
+                <li>
+                  Describes feeling exhausted, tired, experiencing frequent
+                  illness
+                </li>
+                <li>Reports survivor’s guilt regarding safety</li>
+                <li>Mentally unstable while watching events</li>
+                <li>Reports being criticized for appearance</li>
+                <li>Lost long-term friendships due to situation</li>
+              </ul>
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-semibold">Past Medical History:</h3>
+              <p className="text-sm text-gray-700">
+                Reports recent illness lasting 2 weeks
+              </p>
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-semibold">Objective:</h3>
+              <ul className="list-disc pl-5 text-sm text-gray-700">
+                <li>Presents as articulate, engaged</li>
+                <li>Tearful when discussing grandmother</li>
+                <li>Good insight into personal growth and values</li>
+                <li>Strong sense of identity and purpose evident</li>
+              </ul>
+            </div>
+          </div>
+          <div className="rounded-md p-4">
+            <div className="mt-4">
+              <h3 className="font-semibold">Subjective:</h3>
+              <ul className="list-disc pl-5 text-sm text-gray-700">
+                <li>
+                  Reports feeling sad due to ongoing situation in Palestine
+                </li>
+                <li>
+                  Describes feeling exhausted, tired, experiencing frequent
+                  illness
+                </li>
+                <li>Reports survivor’s guilt regarding safety</li>
+                <li>Mentally unstable while watching events</li>
+                <li>Reports being criticized for appearance</li>
+                <li>Lost long-term friendships due to situation</li>
+              </ul>
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-semibold">Past Medical History:</h3>
+              <p className="text-sm text-gray-700">
+                Reports recent illness lasting 2 weeks
+              </p>
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-semibold">Objective:</h3>
+              <ul className="list-disc pl-5 text-sm text-gray-700">
+                <li>Presents as articulate, engaged</li>
+                <li>Tearful when discussing grandmother</li>
+                <li>Good insight into personal growth and values</li>
+                <li>Strong sense of identity and purpose evident</li>
+              </ul>
+            </div>
+          </div>
+          <div className="h-full w-full rounded-md p-4">
+            <div className="mt-4">
+              <h3 className="font-semibold">Subjective:</h3>
+              <ul className="list-disc pl-5 text-sm text-gray-700">
+                <li>
+                  Reports feeling sad due to ongoing situation in Palestine
+                </li>
+                <li>
+                  Describes feeling exhausted, tired, experiencing frequent
+                  illness
+                </li>
+                <li>Reports survivor’s guilt regarding safety</li>
+                <li>Mentally unstable while watching events</li>
+                <li>Reports being criticized for appearance</li>
+                <li>Lost long-term friendships due to situation</li>
+              </ul>
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-semibold">Past Medical History:</h3>
+              <p className="text-sm text-gray-700">
+                Reports recent illness lasting 2 weeks
+              </p>
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-semibold">Objective:</h3>
+              <ul className="list-disc pl-5 text-sm text-gray-700">
+                <li>Presents as articulate, engaged</li>
+                <li>Tearful when discussing grandmother</li>
+                <li>Good insight into personal growth and values</li>
+                <li>Strong sense of identity and purpose evident</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </TabsContent>
+      <TabsContent value="context"></TabsContent>
+      <TabsContent value="note"></TabsContent>
+    </Tabs>
   );
 };
 
