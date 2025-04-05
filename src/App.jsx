@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-import TherapyChat from "./pages/user/TherapyChat";
+import Chat from "./pages/user/Chat";
 import Callback from "./pages/auth/Callback";
 import WelcomePage from "./pages/public/WelcomePage";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -76,7 +76,7 @@ function App() {
           />
 
           <Route
-            path="/therapy-chat"
+            path="/chat"
             element={
               <ProtectedRoute
                 requiredRoles={["user"]}
@@ -90,7 +90,7 @@ function App() {
                   )
                 }
               >
-                <TherapyChat />
+                <Chat />
               </ProtectedRoute>
             }
           />
