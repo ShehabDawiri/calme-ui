@@ -1,0 +1,3468 @@
+{
+  "id": "45bb4389-e6f4-4ba9-b853-58f0dabf086a",
+  "request_id": "G-45bb4389",
+  "version": 2,
+  "status": "done",
+  "created_at": "2025-04-06T08:56:27.155Z",
+  "completed_at": "2025-04-06T08:57:10.035Z",
+  "custom_metadata": null,
+  "error_code": null,
+  "kind": "pre-recorded",
+  "file": {
+    "id": "5cb90a72-a7bf-4cb4-a72f-ac31b46e058a",
+    "filename": "blob",
+    "source": null,
+    "audio_duration": 212.271,
+    "number_of_channels": 2
+  },
+  "request_params": {
+    "audio_url": "https://api.gladia.io/file/5cb90a72-a7bf-4cb4-a72f-ac31b46e058a",
+    "sentences": false,
+    "subtitles": false,
+    "moderation": false,
+    "diarization": true,
+    "translation": false,
+    "audio_to_llm": true,
+    "display_mode": false,
+    "summarization": true,
+    "audio_enhancer": true,
+    "chapterization": false,
+    "custom_spelling": false,
+    "detect_language": true,
+    "name_consistency": false,
+    "sentiment_analysis": true,
+    "audio_to_llm_config": {
+      "prompts": ["Extract the key points from the transcription"]
+    },
+    "diarization_enhanced": false,
+    "punctuation_enhanced": false,
+    "summarization_config": {
+      "type": "general"
+    },
+    "code_switching_config": {
+      "languages": ["ar", "en", "he"]
+    },
+    "enable_code_switching": true,
+    "named_entity_recognition": true,
+    "speaker_reidentification": false,
+    "accurate_words_timestamps": false,
+    "skip_channel_deduplication": false,
+    "structured_data_extraction": true,
+    "structured_data_extraction_config": {
+      "classes": ["Persons", "Organizations"]
+    }
+  },
+  "result": {
+    "metadata": {
+      "audio_duration": 212.230385,
+      "number_of_distinct_channels": 1,
+      "billing_time": 212.230385,
+      "transcription_time": 42.88
+    },
+    "transcription": {
+      "utterances": [
+        {
+          "words": [
+            {
+              "word": "WowLearn",
+              "start": 1.718,
+              "end": 2.248,
+              "confidence": 0.74
+            },
+            {
+              "word": " kids!",
+              "start": 2.37,
+              "end": 2.737,
+              "confidence": 0.99
+            }
+          ],
+          "text": "WowLearn kids!",
+          "language": "en",
+          "start": 1.718,
+          "end": 2.737,
+          "speaker": 0,
+          "channel": 0,
+          "confidence": 0.865
+        },
+        {
+          "words": [
+            {
+              "word": " An",
+              "start": 2.961,
+              "end": 3.082,
+              "confidence": 0.99
+            },
+            {
+              "word": " educational",
+              "start": 3.183,
+              "end": 3.95,
+              "confidence": 0.99
+            },
+            {
+              "word": " channel.",
+              "start": 4.051,
+              "end": 4.395,
+              "confidence": 0.88
+            }
+          ],
+          "text": "An educational channel.",
+          "language": "en",
+          "start": 2.961,
+          "end": 4.395,
+          "speaker": 0,
+          "channel": 0,
+          "confidence": 0.9533333333333333
+        },
+        {
+          "words": [
+            {
+              "word": " Good",
+              "start": 5.838,
+              "end": 6.084,
+              "confidence": 0.99
+            },
+            {
+              "word": " morning.",
+              "start": 6.186,
+              "end": 6.636,
+              "confidence": 0.99
+            }
+          ],
+          "text": "Good morning.",
+          "language": "en",
+          "start": 5.838,
+          "end": 6.636,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.99
+        },
+        {
+          "words": [
+            {
+              "word": " Welcome",
+              "start": 6.962,
+              "end": 7.407,
+              "confidence": 0.98
+            },
+            {
+              "word": " to",
+              "start": 7.448,
+              "end": 7.569,
+              "confidence": 1
+            },
+            {
+              "word": " our",
+              "start": 7.711,
+              "end": 7.853,
+              "confidence": 0.99
+            },
+            {
+              "word": " class.",
+              "start": 7.893,
+              "end": 8.278,
+              "confidence": 0.99
+            }
+          ],
+          "text": "Welcome to our class.",
+          "language": "en",
+          "start": 6.962,
+          "end": 8.278,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.99
+        },
+        {
+          "words": [
+            {
+              "word": " What's",
+              "start": 8.643,
+              "end": 8.908,
+              "confidence": 0.8
+            },
+            {
+              "word": " your",
+              "start": 9.03,
+              "end": 9.153,
+              "confidence": 0.98
+            },
+            {
+              "word": " name?",
+              "start": 9.214,
+              "end": 9.581,
+              "confidence": 0.97
+            }
+          ],
+          "text": "What's your name?",
+          "language": "en",
+          "start": 8.643,
+          "end": 9.581,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9166666666666666
+        },
+        {
+          "words": [
+            {
+              "word": " Good",
+              "start": 12.341,
+              "end": 12.503,
+              "confidence": 0.86
+            },
+            {
+              "word": " morning.",
+              "start": 12.584,
+              "end": 13.05,
+              "confidence": 0.58
+            }
+          ],
+          "text": "Good morning.",
+          "language": "en",
+          "start": 12.341,
+          "end": 13.05,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.72
+        },
+        {
+          "words": [
+            {
+              "word": " My",
+              "start": 13.397,
+              "end": 13.579,
+              "confidence": 0.52
+            },
+            {
+              "word": " name",
+              "start": 13.64,
+              "end": 13.944,
+              "confidence": 0.7
+            },
+            {
+              "word": " is",
+              "start": 13.945,
+              "end": 14.065,
+              "confidence": 0
+            },
+            {
+              "word": " Sam.",
+              "start": 14.085,
+              "end": 14.51,
+              "confidence": 0.52
+            }
+          ],
+          "text": "My name is Sam.",
+          "language": "en",
+          "start": 13.397,
+          "end": 14.51,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.435
+        },
+        {
+          "words": [
+            {
+              "word": " Nice",
+              "start": 16.945,
+              "end": 17.226,
+              "confidence": 0.96
+            },
+            {
+              "word": " to",
+              "start": 17.246,
+              "end": 17.367,
+              "confidence": 1
+            },
+            {
+              "word": " meet",
+              "start": 17.387,
+              "end": 17.587,
+              "confidence": 0.94
+            },
+            {
+              "word": " you,",
+              "start": 17.628,
+              "end": 17.748,
+              "confidence": 0.91
+            }
+          ],
+          "text": "Nice to meet you,",
+          "language": "en",
+          "start": 16.945,
+          "end": 17.748,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9525
+        },
+        {
+          "words": [
+            {
+              "word": " Sam.",
+              "start": 18.19,
+              "end": 18.491,
+              "confidence": 0.67
+            }
+          ],
+          "text": "Sam.",
+          "language": "en",
+          "start": 18.19,
+          "end": 18.491,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.67
+        },
+        {
+          "words": [
+            {
+              "word": " I'm",
+              "start": 18.893,
+              "end": 19.014,
+              "confidence": 0.62
+            },
+            {
+              "word": " Ms.",
+              "start": 19.015,
+              "end": 19.134,
+              "confidence": 0.48
+            }
+          ],
+          "text": "I'm Ms.",
+          "language": "en",
+          "start": 18.893,
+          "end": 19.134,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.55
+        },
+        {
+          "words": [
+            {
+              "word": " Johnson.",
+              "start": 19.194,
+              "end": 19.636,
+              "confidence": 0.86
+            }
+          ],
+          "text": "Johnson.",
+          "language": "en",
+          "start": 19.194,
+          "end": 19.636,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.86
+        },
+        {
+          "words": [
+            {
+              "word": " Are",
+              "start": 20.099,
+              "end": 20.219,
+              "confidence": 0.98
+            },
+            {
+              "word": " you",
+              "start": 20.239,
+              "end": 20.36,
+              "confidence": 0.91
+            },
+            {
+              "word": " excited",
+              "start": 20.42,
+              "end": 20.882,
+              "confidence": 0.94
+            },
+            {
+              "word": " for",
+              "start": 20.922,
+              "end": 21.043,
+              "confidence": 0.96
+            },
+            {
+              "word": " your",
+              "start": 21.103,
+              "end": 21.244,
+              "confidence": 1
+            },
+            {
+              "word": " first",
+              "start": 21.324,
+              "end": 21.585,
+              "confidence": 0.99
+            },
+            {
+              "word": " day?",
+              "start": 21.626,
+              "end": 21.867,
+              "confidence": 0.95
+            }
+          ],
+          "text": "Are you excited for your first day?",
+          "language": "en",
+          "start": 20.099,
+          "end": 21.867,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9614285714285715
+        },
+        {
+          "words": [
+            {
+              "word": " A",
+              "start": 24.088,
+              "end": 24.209,
+              "confidence": 0.96
+            },
+            {
+              "word": " little",
+              "start": 24.31,
+              "end": 24.572,
+              "confidence": 0.73
+            },
+            {
+              "word": " bit,",
+              "start": 24.652,
+              "end": 24.914,
+              "confidence": 0.57
+            }
+          ],
+          "text": "A little bit,",
+          "language": "en",
+          "start": 24.088,
+          "end": 24.914,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.7533333333333333
+        },
+        {
+          "words": [
+            {
+              "word": " but",
+              "start": 25.176,
+              "end": 25.297,
+              "confidence": 0.99
+            },
+            {
+              "word": " I'm",
+              "start": 25.337,
+              "end": 25.458,
+              "confidence": 0.34
+            },
+            {
+              "word": " also",
+              "start": 25.599,
+              "end": 25.921,
+              "confidence": 0.99
+            },
+            {
+              "word": " nervous.",
+              "start": 26.062,
+              "end": 26.646,
+              "confidence": 0.79
+            }
+          ],
+          "text": "but I'm also nervous.",
+          "language": "en",
+          "start": 25.176,
+          "end": 26.646,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.7775000000000001
+        },
+        {
+          "words": [
+            {
+              "word": " That's",
+              "start": 28.832,
+              "end": 29.073,
+              "confidence": 0.7
+            },
+            {
+              "word": " okay.",
+              "start": 29.213,
+              "end": 29.595,
+              "confidence": 0.62
+            }
+          ],
+          "text": "That's okay.",
+          "language": "en",
+          "start": 28.832,
+          "end": 29.595,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.6599999999999999
+        },
+        {
+          "words": [
+            {
+              "word": " Everyone",
+              "start": 29.996,
+              "end": 30.417,
+              "confidence": 0.97
+            },
+            {
+              "word": " feels",
+              "start": 30.477,
+              "end": 30.838,
+              "confidence": 1
+            },
+            {
+              "word": " that",
+              "start": 30.858,
+              "end": 30.999,
+              "confidence": 0.86
+            },
+            {
+              "word": " way",
+              "start": 31.079,
+              "end": 31.259,
+              "confidence": 0.87
+            },
+            {
+              "word": " on",
+              "start": 31.34,
+              "end": 31.46,
+              "confidence": 0.99
+            },
+            {
+              "word": " the",
+              "start": 31.461,
+              "end": 31.56,
+              "confidence": 0.98
+            },
+            {
+              "word": " first",
+              "start": 31.621,
+              "end": 31.901,
+              "confidence": 0.98
+            },
+            {
+              "word": " day.",
+              "start": 31.941,
+              "end": 32.182,
+              "confidence": 1
+            }
+          ],
+          "text": "Everyone feels that way on the first day.",
+          "language": "en",
+          "start": 29.996,
+          "end": 32.182,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.95625
+        },
+        {
+          "words": [
+            {
+              "word": " Do",
+              "start": 33.085,
+              "end": 33.205,
+              "confidence": 1
+            },
+            {
+              "word": " you",
+              "start": 33.245,
+              "end": 33.366,
+              "confidence": 0.99
+            },
+            {
+              "word": " know",
+              "start": 33.426,
+              "end": 33.607,
+              "confidence": 0.96
+            },
+            {
+              "word": " anyone",
+              "start": 33.828,
+              "end": 34.249,
+              "confidence": 1
+            },
+            {
+              "word": " here?",
+              "start": 34.31,
+              "end": 34.611,
+              "confidence": 0.89
+            }
+          ],
+          "text": "Do you know anyone here?",
+          "language": "en",
+          "start": 33.085,
+          "end": 34.611,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.968
+        },
+        {
+          "words": [
+            {
+              "word": " No,",
+              "start": 36.149,
+              "end": 36.27,
+              "confidence": 0.91
+            }
+          ],
+          "text": "No,",
+          "language": "en",
+          "start": 36.149,
+          "end": 36.27,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.91
+        },
+        {
+          "words": [
+            {
+              "word": " I",
+              "start": 36.895,
+              "end": 37.016,
+              "confidence": 0.52
+            },
+            {
+              "word": " don't",
+              "start": 37.017,
+              "end": 37.218,
+              "confidence": 0.4
+            },
+            {
+              "word": " know",
+              "start": 37.238,
+              "end": 37.54,
+              "confidence": 0.67
+            },
+            {
+              "word": " anyone",
+              "start": 37.58,
+              "end": 38.105,
+              "confidence": 0.36
+            },
+            {
+              "word": " yet.",
+              "start": 38.106,
+              "end": 38.367,
+              "confidence": 0.66
+            }
+          ],
+          "text": "I don't know anyone yet.",
+          "language": "en",
+          "start": 36.895,
+          "end": 38.367,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.522
+        },
+        {
+          "words": [
+            {
+              "word": " Don't",
+              "start": 40.162,
+              "end": 40.428,
+              "confidence": 0.76
+            },
+            {
+              "word": " worry.",
+              "start": 40.51,
+              "end": 40.817,
+              "confidence": 0.59
+            }
+          ],
+          "text": "Don't worry.",
+          "language": "en",
+          "start": 40.162,
+          "end": 40.817,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.675
+        },
+        {
+          "words": [
+            {
+              "word": " You'll",
+              "start": 41.184,
+              "end": 41.324,
+              "confidence": 0.52
+            },
+            {
+              "word": " make",
+              "start": 41.344,
+              "end": 41.525,
+              "confidence": 1
+            },
+            {
+              "word": " lots",
+              "start": 41.585,
+              "end": 41.825,
+              "confidence": 1
+            },
+            {
+              "word": " of",
+              "start": 41.826,
+              "end": 41.925,
+              "confidence": 1
+            },
+            {
+              "word": " friends",
+              "start": 41.945,
+              "end": 42.206,
+              "confidence": 0.87
+            },
+            {
+              "word": " soon.",
+              "start": 42.286,
+              "end": 42.586,
+              "confidence": 0.87
+            }
+          ],
+          "text": "You'll make lots of friends soon.",
+          "language": "en",
+          "start": 41.184,
+          "end": 42.586,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.8766666666666666
+        },
+        {
+          "words": [
+            {
+              "word": " What",
+              "start": 43.127,
+              "end": 43.288,
+              "confidence": 0.95
+            },
+            {
+              "word": " do",
+              "start": 43.289,
+              "end": 43.408,
+              "confidence": 0.99
+            },
+            {
+              "word": " you",
+              "start": 43.428,
+              "end": 43.548,
+              "confidence": 0.99
+            },
+            {
+              "word": " like",
+              "start": 43.608,
+              "end": 43.809,
+              "confidence": 1
+            },
+            {
+              "word": " to",
+              "start": 43.81,
+              "end": 43.929,
+              "confidence": 1
+            },
+            {
+              "word": " do",
+              "start": 43.949,
+              "end": 44.069,
+              "confidence": 1
+            },
+            {
+              "word": " for",
+              "start": 44.269,
+              "end": 44.41,
+              "confidence": 1
+            },
+            {
+              "word": " fun?",
+              "start": 44.51,
+              "end": 44.87,
+              "confidence": 0.75
+            }
+          ],
+          "text": "What do you like to do for fun?",
+          "language": "en",
+          "start": 43.127,
+          "end": 44.87,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.96
+        },
+        {
+          "words": [
+            {
+              "word": " I",
+              "start": 47.541,
+              "end": 47.661,
+              "confidence": 1
+            },
+            {
+              "word": " like",
+              "start": 47.681,
+              "end": 47.902,
+              "confidence": 1
+            },
+            {
+              "word": " to",
+              "start": 47.903,
+              "end": 48.023,
+              "confidence": 1
+            },
+            {
+              "word": " draw",
+              "start": 48.083,
+              "end": 48.365,
+              "confidence": 0.98
+            },
+            {
+              "word": " and",
+              "start": 48.485,
+              "end": 48.606,
+              "confidence": 0.86
+            },
+            {
+              "word": " play",
+              "start": 48.666,
+              "end": 48.907,
+              "confidence": 1
+            },
+            {
+              "word": " with",
+              "start": 48.988,
+              "end": 49.129,
+              "confidence": 0.99
+            },
+            {
+              "word": " my",
+              "start": 49.189,
+              "end": 49.33,
+              "confidence": 1
+            },
+            {
+              "word": " toys.",
+              "start": 49.41,
+              "end": 49.913,
+              "confidence": 0.51
+            }
+          ],
+          "text": "I like to draw and play with my toys.",
+          "language": "en",
+          "start": 47.541,
+          "end": 49.913,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.9266666666666666
+        },
+        {
+          "words": [
+            {
+              "word": " That",
+              "start": 52.32,
+              "end": 52.541,
+              "confidence": 0.93
+            },
+            {
+              "word": " sounds",
+              "start": 52.621,
+              "end": 52.921,
+              "confidence": 1
+            },
+            {
+              "word": " fun.",
+              "start": 52.961,
+              "end": 53.262,
+              "confidence": 0.88
+            }
+          ],
+          "text": "That sounds fun.",
+          "language": "en",
+          "start": 52.32,
+          "end": 53.262,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9366666666666666
+        },
+        {
+          "words": [
+            {
+              "word": " We",
+              "start": 53.542,
+              "end": 53.663,
+              "confidence": 1
+            },
+            {
+              "word": " have",
+              "start": 53.743,
+              "end": 53.943,
+              "confidence": 1
+            },
+            {
+              "word": " an",
+              "start": 53.944,
+              "end": 54.063,
+              "confidence": 0.99
+            },
+            {
+              "word": " art",
+              "start": 54.184,
+              "end": 54.344,
+              "confidence": 0.57
+            },
+            {
+              "word": " corner",
+              "start": 54.384,
+              "end": 54.705,
+              "confidence": 0.99
+            },
+            {
+              "word": " in",
+              "start": 54.745,
+              "end": 54.865,
+              "confidence": 1
+            },
+            {
+              "word": " our",
+              "start": 55.005,
+              "end": 55.126,
+              "confidence": 0.95
+            },
+            {
+              "word": " classroom.",
+              "start": 55.186,
+              "end": 55.767,
+              "confidence": 0.74
+            }
+          ],
+          "text": "We have an art corner in our classroom.",
+          "language": "en",
+          "start": 53.542,
+          "end": 55.767,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.905
+        },
+        {
+          "words": [
+            {
+              "word": " Would",
+              "start": 56.569,
+              "end": 56.73,
+              "confidence": 0.73
+            },
+            {
+              "word": " you",
+              "start": 56.75,
+              "end": 56.871,
+              "confidence": 1
+            },
+            {
+              "word": " like",
+              "start": 56.972,
+              "end": 57.214,
+              "confidence": 1
+            },
+            {
+              "word": " to",
+              "start": 57.234,
+              "end": 57.355,
+              "confidence": 1
+            },
+            {
+              "word": " see",
+              "start": 57.416,
+              "end": 57.557,
+              "confidence": 1
+            },
+            {
+              "word": " it",
+              "start": 57.558,
+              "end": 57.678,
+              "confidence": 1
+            },
+            {
+              "word": " later?",
+              "start": 57.779,
+              "end": 58.122,
+              "confidence": 1
+            }
+          ],
+          "text": "Would you like to see it later?",
+          "language": "en",
+          "start": 56.569,
+          "end": 58.122,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9614285714285715
+        },
+        {
+          "words": [
+            {
+              "word": " Yes,",
+              "start": 60.497,
+              "end": 60.779,
+              "confidence": 0.56
+            }
+          ],
+          "text": "Yes,",
+          "language": "en",
+          "start": 60.497,
+          "end": 60.779,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.56
+        },
+        {
+          "words": [
+            {
+              "word": " I",
+              "start": 61.282,
+              "end": 61.402,
+              "confidence": 0.98
+            },
+            {
+              "word": " love",
+              "start": 61.463,
+              "end": 61.704,
+              "confidence": 0.76
+            },
+            {
+              "word": " drawing.",
+              "start": 61.765,
+              "end": 62.328,
+              "confidence": 0.71
+            }
+          ],
+          "text": "I love drawing.",
+          "language": "en",
+          "start": 61.282,
+          "end": 62.328,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.8166666666666668
+        },
+        {
+          "words": [
+            {
+              "word": " Great.",
+              "start": 65.31,
+              "end": 65.674,
+              "confidence": 0.82
+            }
+          ],
+          "text": "Great.",
+          "language": "en",
+          "start": 65.31,
+          "end": 65.674,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.82
+        },
+        {
+          "words": [
+            {
+              "word": " Do",
+              "start": 65.937,
+              "end": 66.058,
+              "confidence": 0.98
+            },
+            {
+              "word": " you",
+              "start": 66.078,
+              "end": 66.2,
+              "confidence": 1
+            },
+            {
+              "word": " have",
+              "start": 66.26,
+              "end": 66.442,
+              "confidence": 0.99
+            },
+            {
+              "word": " any",
+              "start": 66.604,
+              "end": 66.766,
+              "confidence": 0.97
+            },
+            {
+              "word": " favorite",
+              "start": 66.968,
+              "end": 67.413,
+              "confidence": 0.87
+            },
+            {
+              "word": " colors?",
+              "start": 67.433,
+              "end": 67.918,
+              "confidence": 1
+            }
+          ],
+          "text": "Do you have any favorite colors?",
+          "language": "en",
+          "start": 65.937,
+          "end": 67.918,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9683333333333333
+        },
+        {
+          "words": [
+            {
+              "word": " Yes,",
+              "start": 71.517,
+              "end": 71.92,
+              "confidence": 0.95
+            }
+          ],
+          "text": "Yes,",
+          "language": "en",
+          "start": 71.517,
+          "end": 71.92,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.95
+        },
+        {
+          "words": [
+            {
+              "word": " I",
+              "start": 72.282,
+              "end": 72.403,
+              "confidence": 0.99
+            },
+            {
+              "word": " love",
+              "start": 72.463,
+              "end": 72.705,
+              "confidence": 0.93
+            },
+            {
+              "word": " blue",
+              "start": 72.765,
+              "end": 72.946,
+              "confidence": 0.27
+            },
+            {
+              "word": " and",
+              "start": 73.087,
+              "end": 73.208,
+              "confidence": 0.52
+            },
+            {
+              "word": " green.",
+              "start": 73.268,
+              "end": 73.731,
+              "confidence": 0.61
+            }
+          ],
+          "text": "I love blue and green.",
+          "language": "en",
+          "start": 72.282,
+          "end": 73.731,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.6639999999999999
+        },
+        {
+          "words": [
+            {
+              "word": " Those",
+              "start": 76.661,
+              "end": 76.964,
+              "confidence": 0.99
+            },
+            {
+              "word": " are",
+              "start": 77.064,
+              "end": 77.206,
+              "confidence": 1
+            },
+            {
+              "word": " wonderful",
+              "start": 77.307,
+              "end": 77.77,
+              "confidence": 0.96
+            },
+            {
+              "word": " colors.",
+              "start": 77.831,
+              "end": 78.255,
+              "confidence": 0.99
+            }
+          ],
+          "text": "Those are wonderful colors.",
+          "language": "en",
+          "start": 76.661,
+          "end": 78.255,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9850000000000001
+        },
+        {
+          "words": [
+            {
+              "word": " You",
+              "start": 78.496,
+              "end": 78.617,
+              "confidence": 0.99
+            },
+            {
+              "word": " can",
+              "start": 78.637,
+              "end": 78.798,
+              "confidence": 1
+            },
+            {
+              "word": " use",
+              "start": 78.959,
+              "end": 79.1,
+              "confidence": 1
+            },
+            {
+              "word": " them",
+              "start": 79.14,
+              "end": 79.281,
+              "confidence": 0.96
+            },
+            {
+              "word": " in",
+              "start": 79.422,
+              "end": 79.542,
+              "confidence": 1
+            },
+            {
+              "word": " your",
+              "start": 79.583,
+              "end": 79.703,
+              "confidence": 0.98
+            },
+            {
+              "word": " drawings.",
+              "start": 79.764,
+              "end": 80.327,
+              "confidence": 0.44
+            }
+          ],
+          "text": "You can use them in your drawings.",
+          "language": "en",
+          "start": 78.496,
+          "end": 80.327,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.91
+        },
+        {
+          "words": [
+            {
+              "word": " Yay!",
+              "start": 83.04,
+              "end": 83.39,
+              "confidence": 0.31
+            }
+          ],
+          "text": "Yay!",
+          "language": "en",
+          "start": 83.04,
+          "end": 83.39,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.31
+        },
+        {
+          "words": [
+            {
+              "word": " I",
+              "start": 83.697,
+              "end": 83.818,
+              "confidence": 0.06
+            },
+            {
+              "word": " can't",
+              "start": 83.879,
+              "end": 84.243,
+              "confidence": 0.04
+            },
+            {
+              "word": " wait.",
+              "start": 84.324,
+              "end": 84.648,
+              "confidence": 0.46
+            }
+          ],
+          "text": "I can't wait.",
+          "language": "en",
+          "start": 83.697,
+          "end": 84.648,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.18666666666666668
+        },
+        {
+          "words": [
+            {
+              "word": " What",
+              "start": 87.914,
+              "end": 88.057,
+              "confidence": 0.76
+            },
+            {
+              "word": " else",
+              "start": 88.158,
+              "end": 88.382,
+              "confidence": 1
+            },
+            {
+              "word": " do",
+              "start": 88.383,
+              "end": 88.504,
+              "confidence": 0.8
+            },
+            {
+              "word": " you",
+              "start": 88.505,
+              "end": 88.626,
+              "confidence": 0.99
+            },
+            {
+              "word": " enjoy?",
+              "start": 88.647,
+              "end": 89.033,
+              "confidence": 1
+            }
+          ],
+          "text": "What else do you enjoy?",
+          "language": "en",
+          "start": 87.914,
+          "end": 89.033,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9099999999999999
+        },
+        {
+          "words": [
+            {
+              "word": " Do",
+              "start": 89.276,
+              "end": 89.397,
+              "confidence": 0.99
+            },
+            {
+              "word": " you",
+              "start": 89.438,
+              "end": 89.558,
+              "confidence": 0.99
+            },
+            {
+              "word": " like",
+              "start": 89.639,
+              "end": 89.86,
+              "confidence": 0.95
+            },
+            {
+              "word": " reading",
+              "start": 89.921,
+              "end": 90.183,
+              "confidence": 1
+            },
+            {
+              "word": " stories?",
+              "start": 90.263,
+              "end": 90.767,
+              "confidence": 0.97
+            }
+          ],
+          "text": "Do you like reading stories?",
+          "language": "en",
+          "start": 89.276,
+          "end": 90.767,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9799999999999999
+        },
+        {
+          "words": [
+            {
+              "word": " Yes,",
+              "start": 93.745,
+              "end": 94.128,
+              "confidence": 0.96
+            }
+          ],
+          "text": "Yes,",
+          "language": "en",
+          "start": 93.745,
+          "end": 94.128,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.96
+        },
+        {
+          "words": [
+            {
+              "word": " my",
+              "start": 94.571,
+              "end": 94.712,
+              "confidence": 1
+            },
+            {
+              "word": " mom",
+              "start": 94.772,
+              "end": 95.014,
+              "confidence": 0.55
+            },
+            {
+              "word": " reads",
+              "start": 95.155,
+              "end": 95.377,
+              "confidence": 0.56
+            },
+            {
+              "word": " me",
+              "start": 95.417,
+              "end": 95.538,
+              "confidence": 0.9
+            },
+            {
+              "word": " bedtime",
+              "start": 95.618,
+              "end": 96.142,
+              "confidence": 0.79
+            },
+            {
+              "word": " stories.",
+              "start": 96.222,
+              "end": 96.827,
+              "confidence": 0.88
+            }
+          ],
+          "text": "my mom reads me bedtime stories.",
+          "language": "en",
+          "start": 94.571,
+          "end": 96.827,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.7800000000000001
+        },
+        {
+          "words": [
+            {
+              "word": " That's",
+              "start": 99.436,
+              "end": 99.697,
+              "confidence": 0.55
+            },
+            {
+              "word": " wonderful.",
+              "start": 99.857,
+              "end": 100.378,
+              "confidence": 0.99
+            }
+          ],
+          "text": "That's wonderful.",
+          "language": "en",
+          "start": 99.436,
+          "end": 100.378,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.77
+        },
+        {
+          "words": [
+            {
+              "word": " We'll",
+              "start": 100.839,
+              "end": 101.039,
+              "confidence": 0.53
+            },
+            {
+              "word": " read",
+              "start": 101.119,
+              "end": 101.28,
+              "confidence": 0.92
+            },
+            {
+              "word": " lots",
+              "start": 101.38,
+              "end": 101.62,
+              "confidence": 1
+            },
+            {
+              "word": " of",
+              "start": 101.621,
+              "end": 101.741,
+              "confidence": 1
+            },
+            {
+              "word": " stories",
+              "start": 101.801,
+              "end": 102.201,
+              "confidence": 0.98
+            },
+            {
+              "word": " in",
+              "start": 102.302,
+              "end": 102.422,
+              "confidence": 1
+            },
+            {
+              "word": " class",
+              "start": 102.482,
+              "end": 102.783,
+              "confidence": 0.91
+            },
+            {
+              "word": " too.",
+              "start": 102.863,
+              "end": 103.083,
+              "confidence": 0.95
+            }
+          ],
+          "text": "We'll read lots of stories in class too.",
+          "language": "en",
+          "start": 100.839,
+          "end": 103.083,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.91125
+        },
+        {
+          "words": [
+            {
+              "word": " Cool!",
+              "start": 105.987,
+              "end": 106.523,
+              "confidence": 0.2
+            }
+          ],
+          "text": "Cool!",
+          "language": "en",
+          "start": 105.987,
+          "end": 106.523,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.2
+        },
+        {
+          "words": [
+            {
+              "word": " Do",
+              "start": 106.748,
+              "end": 106.869,
+              "confidence": 0.48
+            },
+            {
+              "word": " we",
+              "start": 106.91,
+              "end": 107.03,
+              "confidence": 0.97
+            },
+            {
+              "word": " get",
+              "start": 107.091,
+              "end": 107.252,
+              "confidence": 1
+            },
+            {
+              "word": " to",
+              "start": 107.292,
+              "end": 107.413,
+              "confidence": 0.99
+            },
+            {
+              "word": " play",
+              "start": 107.453,
+              "end": 107.735,
+              "confidence": 0.99
+            },
+            {
+              "word": " too?",
+              "start": 107.856,
+              "end": 108.098,
+              "confidence": 0.68
+            }
+          ],
+          "text": "Do we get to play too?",
+          "language": "en",
+          "start": 106.748,
+          "end": 108.098,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.8516666666666667
+        },
+        {
+          "words": [
+            {
+              "word": " Of",
+              "start": 111.604,
+              "end": 111.725,
+              "confidence": 1
+            },
+            {
+              "word": " course,",
+              "start": 111.765,
+              "end": 112.166,
+              "confidence": 0.95
+            }
+          ],
+          "text": "Of course,",
+          "language": "en",
+          "start": 111.604,
+          "end": 112.166,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.975
+        },
+        {
+          "words": [
+            {
+              "word": " we",
+              "start": 112.246,
+              "end": 112.366,
+              "confidence": 1
+            },
+            {
+              "word": " have",
+              "start": 112.407,
+              "end": 112.567,
+              "confidence": 0.9
+            },
+            {
+              "word": " playtime",
+              "start": 112.607,
+              "end": 113.108,
+              "confidence": 0.98
+            },
+            {
+              "word": " and",
+              "start": 113.229,
+              "end": 113.389,
+              "confidence": 0.79
+            },
+            {
+              "word": " outdoor",
+              "start": 113.53,
+              "end": 113.891,
+              "confidence": 0.68
+            },
+            {
+              "word": " activities",
+              "start": 113.991,
+              "end": 114.552,
+              "confidence": 1
+            },
+            {
+              "word": " every",
+              "start": 114.733,
+              "end": 114.974,
+              "confidence": 1
+            },
+            {
+              "word": " day.",
+              "start": 115.034,
+              "end": 115.314,
+              "confidence": 1
+            }
+          ],
+          "text": "we have playtime and outdoor activities every day.",
+          "language": "en",
+          "start": 112.246,
+          "end": 115.314,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.91875
+        },
+        {
+          "words": [
+            {
+              "word": " That",
+              "start": 118.497,
+              "end": 118.698,
+              "confidence": 0.86
+            },
+            {
+              "word": " sounds",
+              "start": 118.799,
+              "end": 119.202,
+              "confidence": 0.6
+            },
+            {
+              "word": " fun!",
+              "start": 119.283,
+              "end": 119.666,
+              "confidence": 0.49
+            }
+          ],
+          "text": "That sounds fun!",
+          "language": "en",
+          "start": 118.497,
+          "end": 119.666,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.65
+        },
+        {
+          "words": [
+            {
+              "word": " I'm",
+              "start": 123.357,
+              "end": 123.477,
+              "confidence": 0.67
+            },
+            {
+              "word": " glad",
+              "start": 123.537,
+              "end": 123.798,
+              "confidence": 1
+            },
+            {
+              "word": " you",
+              "start": 123.818,
+              "end": 123.939,
+              "confidence": 0.93
+            },
+            {
+              "word": " think",
+              "start": 123.999,
+              "end": 124.2,
+              "confidence": 1
+            },
+            {
+              "word": " so.",
+              "start": 124.24,
+              "end": 124.36,
+              "confidence": 1
+            }
+          ],
+          "text": "I'm glad you think so.",
+          "language": "en",
+          "start": 123.357,
+          "end": 124.36,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9199999999999999
+        },
+        {
+          "words": [
+            {
+              "word": " Do",
+              "start": 124.882,
+              "end": 125.002,
+              "confidence": 1
+            },
+            {
+              "word": " you",
+              "start": 125.023,
+              "end": 125.143,
+              "confidence": 0.97
+            },
+            {
+              "word": " have",
+              "start": 125.203,
+              "end": 125.364,
+              "confidence": 1
+            },
+            {
+              "word": " any",
+              "start": 125.484,
+              "end": 125.645,
+              "confidence": 1
+            },
+            {
+              "word": " questions",
+              "start": 125.725,
+              "end": 126.227,
+              "confidence": 0.96
+            },
+            {
+              "word": " about",
+              "start": 126.327,
+              "end": 126.568,
+              "confidence": 1
+            },
+            {
+              "word": " school?",
+              "start": 126.648,
+              "end": 127.01,
+              "confidence": 0.94
+            }
+          ],
+          "text": "Do you have any questions about school?",
+          "language": "en",
+          "start": 124.882,
+          "end": 127.01,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9814285714285713
+        },
+        {
+          "words": [
+            {
+              "word": " Um,",
+              "start": 129.789,
+              "end": 130.011,
+              "confidence": 0.19
+            }
+          ],
+          "text": "Um,",
+          "language": "en",
+          "start": 129.789,
+          "end": 130.011,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.19
+        },
+        {
+          "words": [
+            {
+              "word": " where",
+              "start": 130.515,
+              "end": 130.737,
+              "confidence": 0.3
+            },
+            {
+              "word": " do",
+              "start": 130.738,
+              "end": 130.817,
+              "confidence": 0
+            },
+            {
+              "word": " we",
+              "start": 130.818,
+              "end": 130.938,
+              "confidence": 0.08
+            },
+            {
+              "word": " eat",
+              "start": 131.079,
+              "end": 131.2,
+              "confidence": 0.35
+            },
+            {
+              "word": " lunch?",
+              "start": 131.301,
+              "end": 131.644,
+              "confidence": 0.71
+            }
+          ],
+          "text": "where do we eat lunch?",
+          "language": "en",
+          "start": 130.515,
+          "end": 131.644,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.288
+        },
+        {
+          "words": [
+            {
+              "word": " Good",
+              "start": 134.256,
+              "end": 134.437,
+              "confidence": 0.99
+            },
+            {
+              "word": " question.",
+              "start": 134.517,
+              "end": 135.018,
+              "confidence": 0.94
+            }
+          ],
+          "text": "Good question.",
+          "language": "en",
+          "start": 134.256,
+          "end": 135.018,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.965
+        },
+        {
+          "words": [
+            {
+              "word": " We",
+              "start": 135.279,
+              "end": 135.399,
+              "confidence": 1
+            },
+            {
+              "word": " eat",
+              "start": 135.56,
+              "end": 135.7,
+              "confidence": 1
+            },
+            {
+              "word": " in",
+              "start": 135.78,
+              "end": 135.9,
+              "confidence": 1
+            },
+            {
+              "word": " the",
+              "start": 135.901,
+              "end": 136.001,
+              "confidence": 0.99
+            },
+            {
+              "word": " cafeteria.",
+              "start": 136.021,
+              "end": 136.743,
+              "confidence": 0.75
+            }
+          ],
+          "text": "We eat in the cafeteria.",
+          "language": "en",
+          "start": 135.279,
+          "end": 136.743,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9480000000000001
+        },
+        {
+          "words": [
+            {
+              "word": " I'll",
+              "start": 137.344,
+              "end": 137.464,
+              "confidence": 0.45
+            },
+            {
+              "word": " show",
+              "start": 137.524,
+              "end": 137.685,
+              "confidence": 0.95
+            },
+            {
+              "word": " you",
+              "start": 137.725,
+              "end": 137.845,
+              "confidence": 0.92
+            },
+            {
+              "word": " where",
+              "start": 137.905,
+              "end": 138.066,
+              "confidence": 0.86
+            },
+            {
+              "word": " it",
+              "start": 138.086,
+              "end": 138.206,
+              "confidence": 1
+            },
+            {
+              "word": " is",
+              "start": 138.207,
+              "end": 138.326,
+              "confidence": 1
+            },
+            {
+              "word": " later.",
+              "start": 138.427,
+              "end": 138.707,
+              "confidence": 1
+            }
+          ],
+          "text": "I'll show you where it is later.",
+          "language": "en",
+          "start": 137.344,
+          "end": 138.707,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.8828571428571428
+        },
+        {
+          "words": [
+            {
+              "word": " Okay,",
+              "start": 140.969,
+              "end": 141.391,
+              "confidence": 0.74
+            }
+          ],
+          "text": "Okay,",
+          "language": "en",
+          "start": 140.969,
+          "end": 141.391,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.74
+        },
+        {
+          "words": [
+            {
+              "word": " what",
+              "start": 141.873,
+              "end": 141.993,
+              "confidence": 0.62
+            },
+            {
+              "word": " will",
+              "start": 142.054,
+              "end": 142.174,
+              "confidence": 0.61
+            },
+            {
+              "word": " we",
+              "start": 142.214,
+              "end": 142.335,
+              "confidence": 0.98
+            },
+            {
+              "word": " do",
+              "start": 142.395,
+              "end": 142.516,
+              "confidence": 0.99
+            },
+            {
+              "word": " first",
+              "start": 142.656,
+              "end": 142.998,
+              "confidence": 0.81
+            },
+            {
+              "word": " today?",
+              "start": 143.018,
+              "end": 143.4,
+              "confidence": 0.72
+            }
+          ],
+          "text": "what will we do first today?",
+          "language": "en",
+          "start": 141.873,
+          "end": 143.4,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.7883333333333332
+        },
+        {
+          "words": [
+            {
+              "word": " First,",
+              "start": 146.249,
+              "end": 146.651,
+              "confidence": 1
+            }
+          ],
+          "text": "First,",
+          "language": "en",
+          "start": 146.249,
+          "end": 146.651,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 1
+        },
+        {
+          "words": [
+            {
+              "word": " we",
+              "start": 146.892,
+              "end": 147.013,
+              "confidence": 1
+            },
+            {
+              "word": " will",
+              "start": 147.073,
+              "end": 147.214,
+              "confidence": 1
+            },
+            {
+              "word": " introduce",
+              "start": 147.274,
+              "end": 147.716,
+              "confidence": 0.99
+            },
+            {
+              "word": " ourselves.",
+              "start": 147.757,
+              "end": 148.259,
+              "confidence": 0.98
+            }
+          ],
+          "text": "we will introduce ourselves.",
+          "language": "en",
+          "start": 146.892,
+          "end": 148.259,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9925
+        },
+        {
+          "words": [
+            {
+              "word": " and",
+              "start": 148.541,
+              "end": 148.742,
+              "confidence": 0.76
+            },
+            {
+              "word": " then",
+              "start": 148.802,
+              "end": 148.983,
+              "confidence": 0.73
+            },
+            {
+              "word": " do",
+              "start": 149.003,
+              "end": 149.124,
+              "confidence": 0.26
+            },
+            {
+              "word": " a",
+              "start": 149.125,
+              "end": 149.245,
+              "confidence": 0.43
+            },
+            {
+              "word": " fun",
+              "start": 149.305,
+              "end": 149.567,
+              "confidence": 0.91
+            },
+            {
+              "word": " activity.",
+              "start": 149.687,
+              "end": 150.17,
+              "confidence": 1
+            }
+          ],
+          "text": "and then do a fun activity.",
+          "language": "en",
+          "start": 148.541,
+          "end": 150.17,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.6816666666666666
+        },
+        {
+          "words": [
+            {
+              "word": " What",
+              "start": 152.981,
+              "end": 153.142,
+              "confidence": 0.76
+            },
+            {
+              "word": " kind",
+              "start": 153.222,
+              "end": 153.524,
+              "confidence": 0.77
+            },
+            {
+              "word": " of",
+              "start": 153.525,
+              "end": 153.644,
+              "confidence": 0.02
+            },
+            {
+              "word": " activity?",
+              "start": 153.685,
+              "end": 154.429,
+              "confidence": 0.65
+            }
+          ],
+          "text": "What kind of activity?",
+          "language": "en",
+          "start": 152.981,
+          "end": 154.429,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.55
+        },
+        {
+          "words": [
+            {
+              "word": " A",
+              "start": 157.197,
+              "end": 157.318,
+              "confidence": 0.98
+            },
+            {
+              "word": " Coloring",
+              "start": 157.399,
+              "end": 157.864,
+              "confidence": 0.98
+            },
+            {
+              "word": " Activity",
+              "start": 157.924,
+              "end": 158.409,
+              "confidence": 1
+            }
+          ],
+          "text": "A Coloring Activity",
+          "language": "en",
+          "start": 157.197,
+          "end": 158.409,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9866666666666667
+        },
+        {
+          "words": [
+            {
+              "word": " You",
+              "start": 158.752,
+              "end": 158.873,
+              "confidence": 0.97
+            },
+            {
+              "word": " can",
+              "start": 158.893,
+              "end": 159.033,
+              "confidence": 1
+            },
+            {
+              "word": " draw",
+              "start": 159.094,
+              "end": 159.355,
+              "confidence": 0.25
+            },
+            {
+              "word": " something",
+              "start": 159.415,
+              "end": 159.756,
+              "confidence": 0.97
+            },
+            {
+              "word": " that",
+              "start": 159.817,
+              "end": 159.937,
+              "confidence": 0.99
+            },
+            {
+              "word": " makes",
+              "start": 159.977,
+              "end": 160.238,
+              "confidence": 1
+            },
+            {
+              "word": " you",
+              "start": 160.258,
+              "end": 160.379,
+              "confidence": 1
+            },
+            {
+              "word": " happy.",
+              "start": 160.479,
+              "end": 160.781,
+              "confidence": 1
+            }
+          ],
+          "text": "You can draw something that makes you happy.",
+          "language": "en",
+          "start": 158.752,
+          "end": 160.781,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.8975
+        },
+        {
+          "words": [
+            {
+              "word": " That",
+              "start": 164.597,
+              "end": 164.779,
+              "confidence": 0.78
+            },
+            {
+              "word": " sounds",
+              "start": 164.88,
+              "end": 165.264,
+              "confidence": 0.82
+            },
+            {
+              "word": " awesome!",
+              "start": 165.344,
+              "end": 165.849,
+              "confidence": 0.47
+            }
+          ],
+          "text": "That sounds awesome!",
+          "language": "en",
+          "start": 164.597,
+          "end": 165.849,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.6900000000000001
+        },
+        {
+          "words": [
+            {
+              "word": " I'm",
+              "start": 171.389,
+              "end": 171.509,
+              "confidence": 0.66
+            },
+            {
+              "word": " happy",
+              "start": 171.57,
+              "end": 171.851,
+              "confidence": 1
+            },
+            {
+              "word": " you're",
+              "start": 171.951,
+              "end": 172.092,
+              "confidence": 0.61
+            },
+            {
+              "word": " excited.",
+              "start": 172.112,
+              "end": 172.695,
+              "confidence": 0.96
+            }
+          ],
+          "text": "I'm happy you're excited.",
+          "language": "en",
+          "start": 171.389,
+          "end": 172.695,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.8075
+        },
+        {
+          "words": [
+            {
+              "word": " Do",
+              "start": 172.936,
+              "end": 173.056,
+              "confidence": 1
+            },
+            {
+              "word": " you",
+              "start": 173.097,
+              "end": 173.217,
+              "confidence": 1
+            },
+            {
+              "word": " want",
+              "start": 173.237,
+              "end": 173.398,
+              "confidence": 0.99
+            },
+            {
+              "word": " to",
+              "start": 173.399,
+              "end": 173.519,
+              "confidence": 1
+            },
+            {
+              "word": " help",
+              "start": 173.599,
+              "end": 173.78,
+              "confidence": 1
+            },
+            {
+              "word": " me",
+              "start": 173.8,
+              "end": 173.92,
+              "confidence": 1
+            },
+            {
+              "word": " pass",
+              "start": 174.021,
+              "end": 174.322,
+              "confidence": 0.97
+            },
+            {
+              "word": " out",
+              "start": 174.503,
+              "end": 174.644,
+              "confidence": 1
+            },
+            {
+              "word": " the",
+              "start": 174.664,
+              "end": 174.784,
+              "confidence": 1
+            },
+            {
+              "word": " crayons?",
+              "start": 174.804,
+              "end": 175.327,
+              "confidence": 0.74
+            }
+          ],
+          "text": "Do you want to help me pass out the crayons?",
+          "language": "en",
+          "start": 172.936,
+          "end": 175.327,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9700000000000001
+        },
+        {
+          "words": [
+            {
+              "word": " Yes,",
+              "start": 178.633,
+              "end": 179.016,
+              "confidence": 0.87
+            }
+          ],
+          "text": "Yes,",
+          "language": "en",
+          "start": 178.633,
+          "end": 179.016,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.87
+        },
+        {
+          "words": [
+            {
+              "word": " I",
+              "start": 179.359,
+              "end": 179.48,
+              "confidence": 0.02
+            },
+            {
+              "word": " would",
+              "start": 179.541,
+              "end": 179.702,
+              "confidence": 0.39
+            },
+            {
+              "word": " love",
+              "start": 179.803,
+              "end": 180.025,
+              "confidence": 0.35
+            },
+            {
+              "word": " to",
+              "start": 180.045,
+              "end": 180.166,
+              "confidence": 0.43
+            },
+            {
+              "word": " help.",
+              "start": 180.207,
+              "end": 180.549,
+              "confidence": 0.55
+            }
+          ],
+          "text": "I would love to help.",
+          "language": "en",
+          "start": 179.359,
+          "end": 180.549,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.348
+        },
+        {
+          "words": [
+            {
+              "word": " Thank",
+              "start": 185.336,
+              "end": 185.577,
+              "confidence": 0.99
+            },
+            {
+              "word": " you,",
+              "start": 185.617,
+              "end": 185.738,
+              "confidence": 0.98
+            }
+          ],
+          "text": "Thank you,",
+          "language": "en",
+          "start": 185.336,
+          "end": 185.738,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.985
+        },
+        {
+          "words": [
+            {
+              "word": " Sam.",
+              "start": 186.159,
+              "end": 186.52,
+              "confidence": 0.93
+            }
+          ],
+          "text": "Sam.",
+          "language": "en",
+          "start": 186.159,
+          "end": 186.52,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.93
+        },
+        {
+          "words": [
+            {
+              "word": " You're",
+              "start": 186.861,
+              "end": 187.062,
+              "confidence": 0.75
+            },
+            {
+              "word": " a",
+              "start": 187.063,
+              "end": 187.182,
+              "confidence": 0.97
+            },
+            {
+              "word": " great",
+              "start": 187.243,
+              "end": 187.584,
+              "confidence": 0.94
+            },
+            {
+              "word": " helper.",
+              "start": 187.624,
+              "end": 188.005,
+              "confidence": 0.99
+            }
+          ],
+          "text": "You're a great helper.",
+          "language": "en",
+          "start": 186.861,
+          "end": 188.005,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9125000000000001
+        },
+        {
+          "words": [
+            {
+              "word": " You're",
+              "start": 189.867,
+              "end": 190.071,
+              "confidence": 0.56
+            },
+            {
+              "word": " welcome.",
+              "start": 190.133,
+              "end": 190.623,
+              "confidence": 0.89
+            }
+          ],
+          "text": "You're welcome.",
+          "language": "en",
+          "start": 189.867,
+          "end": 190.623,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.7250000000000001
+        },
+        {
+          "words": [
+            {
+              "word": " I",
+              "start": 190.969,
+              "end": 191.089,
+              "confidence": 0.99
+            },
+            {
+              "word": " think",
+              "start": 191.15,
+              "end": 191.331,
+              "confidence": 0.97
+            },
+            {
+              "word": " I'm",
+              "start": 191.391,
+              "end": 191.512,
+              "confidence": 0.44
+            },
+            {
+              "word": " going",
+              "start": 191.572,
+              "end": 191.874,
+              "confidence": 0.97
+            },
+            {
+              "word": " to",
+              "start": 191.894,
+              "end": 192.015,
+              "confidence": 0.99
+            },
+            {
+              "word": " like",
+              "start": 192.076,
+              "end": 192.337,
+              "confidence": 0.56
+            },
+            {
+              "word": " this",
+              "start": 192.357,
+              "end": 192.559,
+              "confidence": 0.56
+            },
+            {
+              "word": " class.",
+              "start": 192.639,
+              "end": 193.142,
+              "confidence": 0.97
+            }
+          ],
+          "text": "I think I'm going to like this class.",
+          "language": "en",
+          "start": 190.969,
+          "end": 193.142,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.80625
+        },
+        {
+          "words": [
+            {
+              "word": " I'm",
+              "start": 195.716,
+              "end": 195.837,
+              "confidence": 0.68
+            },
+            {
+              "word": " so",
+              "start": 195.977,
+              "end": 196.097,
+              "confidence": 1
+            },
+            {
+              "word": " glad",
+              "start": 196.297,
+              "end": 196.578,
+              "confidence": 1
+            },
+            {
+              "word": " to",
+              "start": 196.579,
+              "end": 196.698,
+              "confidence": 1
+            },
+            {
+              "word": " hear",
+              "start": 196.738,
+              "end": 196.898,
+              "confidence": 0.98
+            },
+            {
+              "word": " that.",
+              "start": 196.978,
+              "end": 197.279,
+              "confidence": 0.96
+            }
+          ],
+          "text": "I'm so glad to hear that.",
+          "language": "en",
+          "start": 195.716,
+          "end": 197.279,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9366666666666666
+        },
+        {
+          "words": [
+            {
+              "word": " We're",
+              "start": 197.559,
+              "end": 197.74,
+              "confidence": 0.81
+            },
+            {
+              "word": " going",
+              "start": 197.78,
+              "end": 198.06,
+              "confidence": 0.93
+            },
+            {
+              "word": " to",
+              "start": 198.08,
+              "end": 198.2,
+              "confidence": 1
+            },
+            {
+              "word": " have",
+              "start": 198.22,
+              "end": 198.381,
+              "confidence": 0.95
+            },
+            {
+              "word": " a",
+              "start": 198.401,
+              "end": 198.481,
+              "confidence": 1
+            },
+            {
+              "word": " great",
+              "start": 198.521,
+              "end": 198.861,
+              "confidence": 1
+            },
+            {
+              "word": " year",
+              "start": 198.942,
+              "end": 199.122,
+              "confidence": 0.93
+            },
+            {
+              "word": " together.",
+              "start": 199.222,
+              "end": 199.683,
+              "confidence": 1
+            }
+          ],
+          "text": "We're going to have a great year together.",
+          "language": "en",
+          "start": 197.559,
+          "end": 199.683,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.9525
+        },
+        {
+          "words": [
+            {
+              "word": " Yay!",
+              "start": 203.037,
+              "end": 203.319,
+              "confidence": 0.36
+            }
+          ],
+          "text": "Yay!",
+          "language": "en",
+          "start": 203.037,
+          "end": 203.319,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.36
+        },
+        {
+          "words": [
+            {
+              "word": " I",
+              "start": 203.701,
+              "end": 203.822,
+              "confidence": 0.89
+            },
+            {
+              "word": " can't",
+              "start": 203.862,
+              "end": 204.204,
+              "confidence": 0.4
+            },
+            {
+              "word": " wait",
+              "start": 204.325,
+              "end": 204.547,
+              "confidence": 0.7
+            },
+            {
+              "word": " to",
+              "start": 204.607,
+              "end": 204.728,
+              "confidence": 0.92
+            },
+            {
+              "word": " start!",
+              "start": 204.848,
+              "end": 205.291,
+              "confidence": 1
+            }
+          ],
+          "text": "I can't wait to start!",
+          "language": "en",
+          "start": 203.701,
+          "end": 205.291,
+          "speaker": 2,
+          "channel": 0,
+          "confidence": 0.782
+        },
+        {
+          "words": [
+            {
+              "word": " Let's",
+              "start": 209.266,
+              "end": 209.529,
+              "confidence": 0.51
+            },
+            {
+              "word": " begin,",
+              "start": 209.589,
+              "end": 210.115,
+              "confidence": 0.53
+            }
+          ],
+          "text": "Let's begin,",
+          "language": "en",
+          "start": 209.266,
+          "end": 210.115,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.52
+        },
+        {
+          "words": [
+            {
+              "word": " then.",
+              "start": 210.458,
+              "end": 210.802,
+              "confidence": 0.29
+            }
+          ],
+          "text": "then.",
+          "language": "en",
+          "start": 210.458,
+          "end": 210.802,
+          "speaker": 1,
+          "channel": 0,
+          "confidence": 0.29
+        }
+      ],
+      "full_transcript": "WowLearn kids! An educational channel. Good morning. Welcome to our class. What's your name? Good morning. My name is Sam. Nice to meet you, Sam. I'm Ms. Johnson. Are you excited for your first day? A little bit, but I'm also nervous. That's okay. Everyone feels that way on the first day. Do you know anyone here? No, I don't know anyone yet. Don't worry. You'll make lots of friends soon. What do you like to do for fun? I like to draw and play with my toys. That sounds fun. We have an art corner in our classroom. Would you like to see it later? Yes, I love drawing. Great. Do you have any favorite colors? Yes, I love blue and green. Those are wonderful colors. You can use them in your drawings. Yay! I can't wait. What else do you enjoy? Do you like reading stories? Yes, my mom reads me bedtime stories. That's wonderful. We'll read lots of stories in class too. Cool! Do we get to play too? Of course, we have playtime and outdoor activities every day. That sounds fun! I'm glad you think so. Do you have any questions about school? Um, where do we eat lunch? Good question. We eat in the cafeteria. I'll show you where it is later. Okay, what will we do first today? First, we will introduce ourselves. and then do a fun activity. What kind of activity? A Coloring Activity You can draw something that makes you happy. That sounds awesome! I'm happy you're excited. Do you want to help me pass out the crayons? Yes, I would love to help. Thank you, Sam. You're a great helper. You're welcome. I think I'm going to like this class. I'm so glad to hear that. We're going to have a great year together. Yay! I can't wait to start! Let's begin, then.",
+      "languages": ["en"]
+    },
+    "structured_data_extraction": {
+      "success": true,
+      "is_empty": false,
+      "results": {
+        "persons": [],
+        "organizations": []
+      },
+      "exec_time": 0.4142259749993682,
+      "error": null
+    },
+    "named_entity_recognition": {
+      "success": true,
+      "is_empty": false,
+      "results": [
+        {
+          "entity_type": "ORGANIZATION",
+          "text": "WowLearn",
+          "start": 1.718,
+          "end": 2.737
+        },
+        {
+          "entity_type": "NAME_GIVEN",
+          "text": "Sam",
+          "start": 14.085,
+          "end": 14.51
+        },
+        {
+          "entity_type": "NAME_GIVEN",
+          "text": "Sam",
+          "start": 18.19,
+          "end": 18.491
+        },
+        {
+          "entity_type": "NAME",
+          "text": "Johnson",
+          "start": 19.194,
+          "end": 19.636
+        },
+        {
+          "entity_type": "NAME_GIVEN",
+          "text": "Sam",
+          "start": 186.159,
+          "end": 186.52
+        },
+        {
+          "entity_type": "DURATION",
+          "text": "year",
+          "start": 198.942,
+          "end": 199.122
+        }
+      ],
+      "exec_time": 0.9455453730002046,
+      "error": null
+    },
+    "audio_to_llm": {
+      "success": true,
+      "is_empty": false,
+      "results": [
+        {
+          "success": true,
+          "is_empty": false,
+          "results": {
+            "prompt": "Extract the key points from the transcription",
+            "response": "The key points from the transcription are:\n- Introduction between Sam and Ms. Johnson on the first day of class.\n- Sam's interests in drawing, playing with toys, and reading stories.\n- Discussion about favorite colors (blue and green) and plans to use them in drawings.\n- Mention of playtime, outdoor activities, and lunch in the cafeteria.\n- Planned activities for the day, including introducing themselves and a coloring activity.\n- Sam's excitement and willingness to help in class activities.\n- Overall positive interaction and anticipation for a great year ahead."
+          },
+          "exec_time": 2.0406737327575684,
+          "error": null
+        }
+      ],
+      "exec_time": 3.954231823004782,
+      "error": null
+    },
+    "sentiment_analysis": {
+      "success": true,
+      "is_empty": false,
+      "results": [
+        {
+          "text": "WowLearn kids!",
+          "sentiment": "positive",
+          "emotion": "elation",
+          "start": 1.718,
+          "end": 2.737,
+          "speaker": 0,
+          "channel": 0
+        },
+        {
+          "text": "An educational channel.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 2.961,
+          "end": 4.395,
+          "speaker": 0,
+          "channel": 0
+        },
+        {
+          "text": "Good morning.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 5.838,
+          "end": 6.636,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Welcome to our class.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 6.962,
+          "end": 8.278,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "What's your name?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 8.643,
+          "end": 9.581,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Good morning.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 12.341,
+          "end": 13.05,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "My name is Sam.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 13.397,
+          "end": 14.51,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "Nice to meet you, Sam.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 16.945,
+          "end": 18.491,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "I'm Ms.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 18.893,
+          "end": 19.134,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Johnson.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 19.194,
+          "end": 19.636,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Are you excited for your first day?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 20.099,
+          "end": 21.867,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "A little bit, but I'm also nervous.",
+          "sentiment": "neutral",
+          "emotion": "distress",
+          "start": 24.088,
+          "end": 26.646,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "That's okay.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 28.832,
+          "end": 29.595,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Everyone feels that way on the first day.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 29.996,
+          "end": 32.182,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Do you know anyone here?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 33.085,
+          "end": 34.611,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "No, I don't know anyone yet.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 36.149,
+          "end": 38.367,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "Don't worry.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 40.162,
+          "end": 40.817,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "You'll make lots of friends soon.",
+          "sentiment": "positive",
+          "emotion": "contentment",
+          "start": 41.184,
+          "end": 42.586,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "What do you like to do for fun?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 43.127,
+          "end": 44.87,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "I like to draw and play with my toys.",
+          "sentiment": "positive",
+          "emotion": "contentment",
+          "start": 47.541,
+          "end": 49.913,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "That sounds fun.",
+          "sentiment": "positive",
+          "emotion": "interest",
+          "start": 52.32,
+          "end": 53.262,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "We have an art corner in our classroom.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 53.542,
+          "end": 55.767,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Would you like to see it later?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 56.569,
+          "end": 58.122,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Yes, I love drawing.",
+          "sentiment": "positive",
+          "emotion": "adoration",
+          "start": 60.497,
+          "end": 62.328,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "Great.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 65.31,
+          "end": 65.674,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Do you have any favorite colors?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 65.937,
+          "end": 67.918,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Yes, I love blue and green.",
+          "sentiment": "positive",
+          "emotion": "adoration",
+          "start": 71.517,
+          "end": 73.731,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "Those are wonderful colors.",
+          "sentiment": "positive",
+          "emotion": "adoration",
+          "start": 76.661,
+          "end": 78.255,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "You can use them in your drawings.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 78.496,
+          "end": 80.327,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Yay!",
+          "sentiment": "positive",
+          "emotion": "amusement",
+          "start": 83.04,
+          "end": 83.39,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "I can't wait.",
+          "sentiment": "negative",
+          "emotion": "anger",
+          "start": 83.697,
+          "end": 84.648,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "What else do you enjoy?",
+          "sentiment": "neutral",
+          "emotion": "interest",
+          "start": 87.914,
+          "end": 89.033,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Do you like reading stories?",
+          "sentiment": "positive",
+          "emotion": "interest",
+          "start": 89.276,
+          "end": 90.767,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Yes, my mom reads me bedtime stories.",
+          "sentiment": "positive",
+          "emotion": "contentment",
+          "start": 93.745,
+          "end": 96.827,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "That's wonderful.",
+          "sentiment": "positive",
+          "emotion": "elation",
+          "start": 99.436,
+          "end": 100.378,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "We'll read lots of stories in class too.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 100.839,
+          "end": 103.083,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Cool!",
+          "sentiment": "positive",
+          "emotion": "interest",
+          "start": 105.987,
+          "end": 106.523,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "Do we get to play too?",
+          "sentiment": "positive",
+          "emotion": "interest",
+          "start": 106.748,
+          "end": 108.098,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "Of course, we have playtime and outdoor activities every day.",
+          "sentiment": "positive",
+          "emotion": "contentment",
+          "start": 111.604,
+          "end": 115.314,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "That sounds fun!",
+          "sentiment": "positive",
+          "emotion": "interest",
+          "start": 118.497,
+          "end": 119.666,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "I'm glad you think so.",
+          "sentiment": "positive",
+          "emotion": "elation",
+          "start": 123.357,
+          "end": 124.36,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Do you have any questions about school?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 124.882,
+          "end": 127.01,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Um, where do we eat lunch?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 129.789,
+          "end": 131.644,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "Good question.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 134.256,
+          "end": 135.018,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "We eat in the cafeteria.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 135.279,
+          "end": 136.743,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "I'll show you where it is later.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 137.344,
+          "end": 138.707,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Okay, what will we do first today?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 140.969,
+          "end": 143.4,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "First, we will introduce ourselves.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 146.249,
+          "end": 148.259,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "and then do a fun activity.",
+          "sentiment": "positive",
+          "emotion": "interest",
+          "start": 148.541,
+          "end": 150.17,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "What kind of activity?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 152.981,
+          "end": 154.429,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "A Coloring Activity You can draw something that makes you happy.",
+          "sentiment": "positive",
+          "emotion": "elation",
+          "start": 157.197,
+          "end": 160.781,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "That sounds awesome!",
+          "sentiment": "positive",
+          "emotion": "awe",
+          "start": 164.597,
+          "end": 165.849,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "I'm happy you're excited.",
+          "sentiment": "positive",
+          "emotion": "elation",
+          "start": 171.389,
+          "end": 172.695,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Do you want to help me pass out the crayons?",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 172.936,
+          "end": 175.327,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Yes, I would love to help.",
+          "sentiment": "positive",
+          "emotion": "elation",
+          "start": 178.633,
+          "end": 180.549,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "Thank you, Sam.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 185.336,
+          "end": 186.52,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "You're a great helper.",
+          "sentiment": "positive",
+          "emotion": "elation",
+          "start": 186.861,
+          "end": 188.005,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "You're welcome.",
+          "sentiment": "positive",
+          "emotion": "neutral",
+          "start": 189.867,
+          "end": 190.623,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "I think I'm going to like this class.",
+          "sentiment": "positive",
+          "emotion": "interest",
+          "start": 190.969,
+          "end": 193.142,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "I'm so glad to hear that.",
+          "sentiment": "positive",
+          "emotion": "elation",
+          "start": 195.716,
+          "end": 197.279,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "We're going to have a great year together.",
+          "sentiment": "positive",
+          "emotion": "contentment",
+          "start": 197.559,
+          "end": 199.683,
+          "speaker": 1,
+          "channel": 0
+        },
+        {
+          "text": "Yay!",
+          "sentiment": "positive",
+          "emotion": "amusement",
+          "start": 203.037,
+          "end": 203.319,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "I can't wait to start!",
+          "sentiment": "positive",
+          "emotion": "embarrassment",
+          "start": 203.701,
+          "end": 205.291,
+          "speaker": 2,
+          "channel": 0
+        },
+        {
+          "text": "Let's begin, then.",
+          "sentiment": "neutral",
+          "emotion": "neutral",
+          "start": 209.266,
+          "end": 210.802,
+          "speaker": 1,
+          "channel": 0
+        }
+      ],
+      "exec_time": 10.228181510001422,
+      "error": null
+    },
+    "summarization": {
+      "success": true,
+      "is_empty": false,
+      "results": "The conversation is between a teacher and a new student named Sam. The teacher, Ms. Johnson, welcomes Sam to the class and helps him feel comfortable by discussing his interests in drawing, favorite colors, and reading stories. Sam is excited about the art corner, playtime, and outdoor activities. The teacher plans a coloring activity for the first day to help the students introduce themselves and have fun. Sam is eager to start and looks forward to a great year ahead.",
+      "exec_time": 3.954231823004782,
+      "error": null
+    }
+  }
+}

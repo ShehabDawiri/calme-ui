@@ -82,7 +82,11 @@ body {
 
 /* @import "tailwindcss/preflight"; */
 @theme {
-  --color-mint-500: oklch(0.72 0.11 178);
+  --color-primary-100: #fdfefe; /* Lightest shade */
+  --color-primary-200: #d1d2d3; /* Light pink */
+  --color-primary-300: #adadaf; /* light gray */
+  --color-primary-400: #4b545d; /* Dark gray */
+  --color-primary-500: #131727; /* Darkest shade */
 }
 
 @layer base {

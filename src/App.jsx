@@ -9,6 +9,7 @@ import { Navigate } from "react-router-dom";
 import { useToast } from "./hooks/useToast";
 import NotFound from "./pages/public/NotFound";
 import { InitialRedirect } from "./pages/initialRedirect";
+import TimelinePage from "./pages/test";
 
 const ROLE_NAMESPACE = `${import.meta.env.VITE_AUTH0_AUDIENCE}/roles`;
 
@@ -50,7 +51,7 @@ function App() {
         <Routes>
           {/* Public routes */}
           <Route path="/welcome" element={<WelcomePage />} />
-
+          <Route path="/test" element={<TimelinePage />} />
           {/* Auth callback - removed protection since it's part of auth flow */}
           <Route path="/callback" element={<Callback />} />
 

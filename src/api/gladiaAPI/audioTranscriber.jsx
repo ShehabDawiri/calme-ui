@@ -28,11 +28,29 @@ export async function uploadAudio(file) {
 export async function startPreRecordedJob(audioUrl) {
   const payload = {
     audio_url: audioUrl,
-    translation: false,
     diarization: true,
     detect_language: true,
-    enable_code_switching: false,
     sentiment_analysis: true,
+
+    enable_code_switching: true,
+    code_switching_config: {
+      languages: ["ar", "en", "he"],
+    },
+    // custom_vocabulary: true,
+    summarization: true,
+    summarization_config: {
+      type: "general",
+    },
+    named_entity_recognition: true,
+
+    structured_data_extraction: true,
+    structured_data_extraction_config: {
+      classes: ["Persons", "Organizations"],
+    },
+    audio_to_llm: true,
+    audio_to_llm_config: {
+      prompts: ["Extract the key points from the transcription"],
+    },
   };
 
   const options = {
