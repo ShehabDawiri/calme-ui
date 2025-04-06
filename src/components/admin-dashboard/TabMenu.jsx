@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
-import { Mic, MessageCircle, NotebookPen } from "lucide-react";
+import { Mic, MessageCircle, NotebookPen, ChartBar } from "lucide-react";
 
 const TabMenu = () => {
   return (
@@ -15,6 +15,9 @@ const TabMenu = () => {
           </TabsTrigger>
           <TabsTrigger value="note">
             <NotebookPen size={16} /> Note
+          </TabsTrigger>
+          <TabsTrigger value="anaysis">
+            <ChartBar size={16} /> Analsis
           </TabsTrigger>
         </div>
       </TabsList>

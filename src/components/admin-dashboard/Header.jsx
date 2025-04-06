@@ -31,13 +31,13 @@ const Header = () => {
             <Calendar size={16} />
             13/06/2021 10:30am
           </button>
-          <button
+          {/* <button
             type="button"
             className="flex items-center justify-center gap-3 rounded-md border-[1px] border-[var(--color-primary-200)] bg-[var(--color-primary-100)] px-4 py-2 text-[var(--color-primary-500)]"
           >
             <Languages size={16} />
             en
-          </button>
+          </button> */}
         </div>
         <div className="right flex h-full items-center gap-2 font-normal">
           <button
