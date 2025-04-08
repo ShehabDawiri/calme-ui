@@ -19,12 +19,8 @@ function Callback() {
         const token = await getAccessTokenSilently();
         document.cookie = `auth_token=${token}; path=/; secure; samesite=strict;`;
 
-        // Verify token with backend
+        const response = await axiosInstance.get("/protected");
 
-        //TODO: add that when be the backend is ready
-        // const response = await axiosInstance.get("/protected");
-        //Dummy response
-        const response = { status: 200 };
         if (response.status === 200) {
           navigate("/");
         }
@@ -57,7 +53,6 @@ function Callback() {
 
         showToast(errorMessage, variant);
 
-        // Proper logout with redirect
         logout({
           logoutParams: {
             returnTo: window.location.origin,
@@ -67,7 +62,7 @@ function Callback() {
     };
 
     handleAuthentication();
-  }, [isAuthenticated, getAccessTokenSilently, navigate, showToast, logout]);
+  }, [isAuthenticated, getAccessTokenSilently]);
 
   return <Loader />;
 }

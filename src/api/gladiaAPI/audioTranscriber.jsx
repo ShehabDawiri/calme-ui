@@ -28,11 +28,29 @@ export async function uploadAudio(file) {
 export async function startPreRecordedJob(audioUrl) {
   const payload = {
     audio_url: audioUrl,
-    translation: false,
     diarization: true,
     detect_language: true,
-    enable_code_switching: false,
     sentiment_analysis: true,
+
+    enable_code_switching: true,
+    code_switching_config: {
+      languages: ["ar", "en", "he"],
+    },
+    // custom_vocabulary: true,
+    summarization: true,
+    summarization_config: {
+      type: "general",
+    },
+    named_entity_recognition: true,
+
+    structured_data_extraction: true,
+    structured_data_extraction_config: {
+      classes: ["Persons", "Organizations"],
+    },
+    audio_to_llm: true,
+    audio_to_llm_config: {
+      prompts: ["Extract the key points from the transcription"],
+    },
   };
 
   const options = {
@@ -82,51 +100,51 @@ export async function getPreRecordedResult(jobId) {
  * @param {Function} updateStepCallback - Function to update processing status
  * @param {Function} t - Translation function
  */
-export async function processAudio(file, updateStepCallback, t) {
+
+export async function processAudio(file, updateStepCallback) {
   try {
-    updateStepCallback(t("audioRecorder.errors.uploading"));
+    updateStepCallback("Uploading audio...");
     const uploadResponse = await uploadAudio(file);
     const audioUrl = uploadResponse.audio_url;
     console.log("Uploaded audio file:", uploadResponse);
 
-    updateStepCallback(t("audioRecorder.status.startingProcessing"));
+    updateStepCallback("Starting processing...");
     const jobResponse = await startPreRecordedJob(audioUrl);
     console.log("Started processing job:", jobResponse);
     const jobId = jobResponse.id;
 
     let result = null;
     const pollingInterval = 5000;
-    updateStepCallback(t("record.audioRecorder.status.processing"));
+    updateStepCallback("Processing audio...");
 
     while (true) {
       result = await getPreRecordedResult(jobId);
       console.log("Result:", result);
       if (result.status === "done") {
-        updateStepCallback(t("record.audioRecorder.errors.uploadComplete"));
+        updateStepCallback("Upload complete");
         break;
       }
 
       if (result.status === "error") {
-        throw new Error(
-          result.error || t("record.audioRecorder.errors.processingError")
-        );
+        throw new Error(result.error || "An error occurred during processing.");
       }
 
       await new Promise((resolve) => setTimeout(resolve, pollingInterval));
     }
 
-    if (!result?.result?.transcription?.full_transcript) {
-      throw new Error(t("record.audioRecorder.errors.emptyTranscript"));
+    const transcript =
+      result &&
+      result.result &&
+      result.result.transcription &&
+      result.result.transcription.full_transcript;
+    if (!transcript) {
+      throw new Error("No transcript was generated.");
     }
 
-    return result.result.transcription.full_transcript;
+    return transcript;
   } catch (error) {
     console.error("Error during processing:", error.message);
-    updateStepCallback(
-      t("record.audioRecorder.errors.uploadFailed", {
-        errorMessage: error.message,
-      })
-    );
+    updateStepCallback(`Upload failed: ${error.message}`);
     throw error;
   }
 }

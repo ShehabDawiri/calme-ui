@@ -11,6 +11,25 @@
   --color-primary-400: #4b545d; /* Dark gray */
   --color-primary-500: #131727; /* Darkest shade */
 
+  /* Status colors */
+  --color-success: #22c55e;
+  --color-success-hover: #16a34a;
+  --color-error: #ef4444;
+  --color-warning: #eab308;
+  --color-neutral: #64748b;
+  --color-neutral-hover: #475569;
+  --color-secondary: #3b82f6;
+  --color-secondary-hover: #2563eb;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.1);
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -234,3 +253,55 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* =================<1) ChatBot>============== */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.typing-indicator .dot {
+  width: 6px;
+  height: 6px;
+  margin: 0 2px;
+  background-color: var(--color-primary-400);
+  border-radius: 50%;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-indicator .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-input {
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-primary-100);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .chat-messages {
+    padding-bottom: 80px;
+  }
+}
+/* =================<ChatBot>============== */
