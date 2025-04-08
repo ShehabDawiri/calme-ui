@@ -1,39 +1,11 @@
-// src/components/timeline/Timeline.jsx
-import { useState, useRef } from "react";
-import data from "../../data/transcription/transcription.json";
+import { useState, useRef, useEffect } from "react";
 import { CSVLink } from "react-csv";
 import TimelineView from "./TimelineView.jsx";
 import GraphsView from "./GraphsView.jsx";
 import DataView from "./DataView.jsx";
 import EntitySummaryTab from "./InsightsView";
-const colorPool = [
-  { bg: "bg-blue-100", border: "border-blue-500", text: "text-blue-800" },
-  { bg: "bg-green-100", border: "border-green-500", text: "text-green-800" },
-  { bg: "bg-purple-100", border: "border-purple-500", text: "text-purple-800" },
-  { bg: "bg-orange-100", border: "border-orange-500", text: "text-orange-800" },
-  { bg: "bg-pink-100", border: "border-pink-500", text: "text-pink-800" },
-  { bg: "bg-teal-100", border: "border-teal-500", text: "text-teal-800" },
-  { bg: "bg-yellow-100", border: "border-yellow-500", text: "text-yellow-800" },
-  { bg: "bg-red-100", border: "border-red-500", text: "text-red-800" },
-];
-
-// Dynamically generate SPEAKER_COLORS
-const generateSpeakerColors = () => {
-  const speakers = new Set(
-    data.result.sentiment_analysis.results.map((u) => u.speaker),
-  );
-
-  const colors = {};
-  let index = 0;
-  for (const speaker of speakers) {
-    colors[speaker] = colorPool[index % colorPool.length];
-    index++;
-  }
-
-  return colors;
-};
-
-export const SPEAKER_COLORS = generateSpeakerColors();
+import { getPreRecordedResult } from "@/api/gladiaAPI/audioTranscriber"; // Keep the API import
+import { Loader } from "../ui/loader.jsx";
 
 export const rowHeight = 50;
 
@@ -47,17 +19,36 @@ export const formatTime = (seconds) => {
   return `${mins}:${secs}`;
 };
 
-export default function Timeline() {
+export default function Timeline({ gladiaId }) {
   const [activeTab, setActiveTab] = useState("timeline");
   const [selectedUtterance, setSelectedUtterance] = useState(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
+  const [data, setData] = useState(null); // Initially null to indicate data isn't loaded
   const [filters, setFilters] = useState({
     speakers: [],
     sentiments: [],
     minConfidence: 0,
   });
   const timelineRef = useRef(null);
+
+  useEffect(() => {
+    const getData = async (gladiaId) => {
+      try {
+        const response = await getPreRecordedResult(gladiaId);
+        setData(response);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (gladiaId) {
+      getData(gladiaId);
+    }
+  }, [gladiaId]);
+  if (!data) {
+    return <Loader />;
+  }
 
   // Filter processed data based on user inputs.
   const processedData = data.result.transcription.utterances.filter(
@@ -126,6 +117,46 @@ export default function Timeline() {
     </div>
   );
 
+  const colorPool = [
+    { bg: "bg-blue-100", border: "border-blue-500", text: "text-blue-800" },
+    { bg: "bg-green-100", border: "border-green-500", text: "text-green-800" },
+    {
+      bg: "bg-purple-100",
+      border: "border-purple-500",
+      text: "text-purple-800",
+    },
+    {
+      bg: "bg-orange-100",
+      border: "border-orange-500",
+      text: "text-orange-800",
+    },
+    { bg: "bg-pink-100", border: "border-pink-500", text: "text-pink-800" },
+    { bg: "bg-teal-100", border: "border-teal-500", text: "text-teal-800" },
+    {
+      bg: "bg-yellow-100",
+      border: "border-yellow-500",
+      text: "text-yellow-800",
+    },
+    { bg: "bg-red-100", border: "border-red-500", text: "text-red-800" },
+  ];
+
+  const generateSpeakerColors = () => {
+    const speakers = new Set(
+      data.result.sentiment_analysis?.results.map((u) => u.speaker),
+    );
+
+    const colors = {};
+    let index = 0;
+    for (const speaker of speakers) {
+      colors[speaker] = colorPool[index % colorPool.length];
+      index++;
+    }
+
+    return colors;
+  };
+
+  const speakerColors = generateSpeakerColors();
+
   return (
     <div className="mx-auto h-screen max-w-7xl space-y-8 overflow-y-auto p-6">
       {renderTabs()}
@@ -142,12 +173,14 @@ export default function Timeline() {
           setCurrentTime={setCurrentTime}
           selectedUtterance={selectedUtterance}
           setSelectedUtterance={setSelectedUtterance}
+          speakerColors={speakerColors}
         />
       )}
       {activeTab === "graphs" && (
         <GraphsView
           speakerCounts={speakerCounts}
           sentimentCounts={sentimentCounts}
+          speakerColors={speakerColors}
         />
       )}
       {activeTab === "data" && <DataView processedData={processedData} />}

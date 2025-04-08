@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-import { SPEAKER_COLORS, rowHeight, formatTime } from "./Timeline.jsx";
+import { rowHeight, formatTime } from "./Timeline.jsx";
 
 export default function TimelineView({
   data,
@@ -12,6 +12,7 @@ export default function TimelineView({
   currentTime,
   setCurrentTime,
   setSelectedUtterance,
+  speakerColors,
 }) {
   const audioDuration = data?.file?.audio_duration || 0;
 
@@ -60,7 +61,7 @@ export default function TimelineView({
         <div className="space-y-12">
           <label className="text-sm font-medium text-gray-700">Speakers</label>
           <div className="flex flex-col gap-2">
-            {Object.keys(SPEAKER_COLORS).map((speaker) => (
+            {Object.keys(speakerColors).map((speaker) => (
               <label key={speaker} className="flex items-center space-x-2">
                 <input
                   type="checkbox"
@@ -71,7 +72,7 @@ export default function TimelineView({
                 <span className="flex items-center">
                   <span
                     className="mr-2 h-3 w-3 rounded-full"
-                    style={{ backgroundColor: SPEAKER_COLORS[speaker].bg }}
+                    style={{ backgroundColor: speakerColors[speaker].bg }}
                   />
                   Speaker {speaker}
                 </span>
@@ -165,7 +166,7 @@ export default function TimelineView({
               <div className="absolute -left-20 flex w-20 items-center justify-end pr-2 text-sm text-gray-600">
                 <div
                   className="mr-2 h-3 w-3 rounded-full"
-                  style={{ backgroundColor: SPEAKER_COLORS[speaker]?.bg }}
+                  style={{ backgroundColor: speakerColors[speaker]?.bg }}
                 />
                 Speaker {speaker}
               </div>
@@ -185,16 +186,17 @@ export default function TimelineView({
 
           {/* Utterance Blocks */}
           {processedData.map((utterance, index) => {
-            const sentiment = data.result.sentiment_analysis.results.find(
-              (r) => r.start === utterance.start && r.end === utterance.end,
-            )?.sentiment;
+            const sentiment =
+              data?.result?.sentiment_analysis?.results?.find(
+                (r) => r.start === utterance.start && r.end === utterance.end,
+              )?.sentiment || "neutral"; // Default to "neutral" if undefined
 
             const speakerIndex = uniqueSpeakers.indexOf(utterance.speaker);
 
             return (
               <div
                 key={index}
-                className={`absolute h-8 cursor-pointer rounded-lg border-l-4 p-1.5 transition-all duration-200 hover:z-10 hover:scale-105 hover:shadow-md ${SPEAKER_COLORS[utterance.speaker].bg} ${SPEAKER_COLORS[utterance.speaker].border}`}
+                className={`absolute h-8 cursor-pointer rounded-lg border-l-4 p-1.5 transition-all duration-200 hover:z-10 hover:scale-105 hover:shadow-md ${speakerColors[utterance.speaker]?.bg} ${speakerColors[utterance.speaker]?.border}`}
                 style={{
                   left: `${(utterance.start / audioDuration) * 100}%`,
                   width: `${((utterance.end - utterance.start) / audioDuration) * 100}%`,

@@ -20,30 +20,28 @@ const axiosInstance = axios.create({
 
 // Add Authorization header to every request
 axiosInstance.interceptors.request.use(
-  (config) => {
-    const token = getToken();
-
+  async (config) => {
+    const token = await getToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
-
 // Error handling interceptor
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     console.error("API error:", error.response?.data || error.message);
     return Promise.reject(error);
-  }
+  },
 );
 
 const handleAxiosError = (error, functionName, url) => {
   console.error(
     `${functionName} failed (${url}):`,
-    error.response?.data || error.message
+    error.response?.data || error.message,
   );
 };
 

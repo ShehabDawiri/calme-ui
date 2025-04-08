@@ -2,9 +2,12 @@
 import React from "react";
 import SpeakerBarGraph from "./SpeakerBarGraph.jsx";
 import SentimentPieGraph from "./SentimentPieGraph.jsx";
-import { SPEAKER_COLORS } from "./Timeline.jsx"; // Import the color constants
 
-export default function GraphsView({ speakerCounts, sentimentCounts }) {
+export default function GraphsView({
+  speakerCounts,
+  sentimentCounts,
+  speakerColors,
+}) {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
       <div className="rounded-lg bg-white p-6 shadow-md">
@@ -13,7 +16,7 @@ export default function GraphsView({ speakerCounts, sentimentCounts }) {
         </h4>
         <SpeakerBarGraph
           speakerCounts={speakerCounts}
-          speakerColors={SPEAKER_COLORS} // Pass down the color data
+          speakerColors={speakerColors} 
         />
       </div>
       <div className="rounded-lg bg-white p-6 shadow-md">
