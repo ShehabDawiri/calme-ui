@@ -28,9 +28,12 @@ const TabMenu = () => {
             </TabsTrigger>
           </div>
         </TabsList>
-        <TabsContent value="transcript" className="h-full w-full">
+        <TabsContent
+          value="transcript"
+          className="h-full w-full overflow-scroll"
+        >
           {/* stub data for development purposes only */}
-          <div className="wrapper h-full w-full overflow-y-scroll">
+          <div className="wrapper h-full w-full">
             <div className="px-4">
               <div className="">
                 <h3 className="font-semibold">Subjective:</h3>
@@ -49,14 +52,14 @@ const TabMenu = () => {
                 </ul>
               </div>
 
-              <div className="mt-4">
+              <div className="">
                 <h3 className="font-semibold">Past Medical History:</h3>
                 <p className="text-sm text-gray-700">
                   Reports recent illness lasting 2 weeks
                 </p>
               </div>
 
-              <div className="mt-4">
+              <div className="">
                 <h3 className="font-semibold">Objective:</h3>
                 <ul className="list-disc pl-5 text-sm text-gray-700">
                   <li>Presents as articulate, engaged</li>
@@ -67,7 +70,7 @@ const TabMenu = () => {
               </div>
             </div>
             <div className="rounded-md p-4">
-              <div className="mt-4">
+              <div className="">
                 <h3 className="font-semibold">Subjective:</h3>
                 <ul className="list-disc pl-5 text-sm text-gray-700">
                   <li>
@@ -84,14 +87,14 @@ const TabMenu = () => {
                 </ul>
               </div>
 
-              <div className="mt-4">
+              <div className="">
                 <h3 className="font-semibold">Past Medical History:</h3>
                 <p className="text-sm text-gray-700">
                   Reports recent illness lasting 2 weeks
                 </p>
               </div>
 
-              <div className="mt-4">
+              <div className="">
                 <h3 className="font-semibold">Objective:</h3>
                 <ul className="list-disc pl-5 text-sm text-gray-700">
                   <li>Presents as articulate, engaged</li>
@@ -101,8 +104,8 @@ const TabMenu = () => {
                 </ul>
               </div>
             </div>
-            <div className="h-full w-full rounded-md p-4">
-              <div className="mt-4">
+            <div className="rounded-md p-4">
+              <div className="">
                 <h3 className="font-semibold">Subjective:</h3>
                 <ul className="list-disc pl-5 text-sm text-gray-700">
                   <li>
@@ -119,14 +122,14 @@ const TabMenu = () => {
                 </ul>
               </div>
 
-              <div className="mt-4">
+              <div className="">
                 <h3 className="font-semibold">Past Medical History:</h3>
                 <p className="text-sm text-gray-700">
                   Reports recent illness lasting 2 weeks
                 </p>
               </div>
 
-              <div className="mt-4">
+              <div className="">
                 <h3 className="font-semibold">Objective:</h3>
                 <ul className="list-disc pl-5 text-sm text-gray-700">
                   <li>Presents as articulate, engaged</li>
