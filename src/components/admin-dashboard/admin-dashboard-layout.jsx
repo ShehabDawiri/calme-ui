@@ -35,7 +35,7 @@ export default function AdminDashboardLayout({ children }) {
         </SidebarContent>
         <SidebarFooter
           className={
-            "border-primary-200 flex h-22 w-full items-center justify-center border-t-1 bg-transparent p-0 px-4 font-semibold"
+            "border-primary-200 flex h-20 w-full items-center justify-center border-t-1 bg-transparent p-0 px-4 font-semibold"
           }
         >
           <Button
