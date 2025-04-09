@@ -12,18 +12,18 @@ const TabMenu = () => {
   return (
     <div className="h-full w-full overflow-hidden">
       <Tabs defaultValue="transcript" className="h-full w-full">
-        <TabsList className="bg-primary-100 border-primary-200 flex h-fit w-full items-center justify-baseline rounded-none border-t-1 border-b-1 py-2.5">
-          <div className="flex h-full w-fit items-center justify-center gap-2 px-4">
-            <TabsTrigger value="transcript">
+        <TabsList className="flex h-fit w-full items-center justify-baseline rounded-none bg-transparent py-3">
+          <div className="text-primary-500 flex h-full w-fit items-center justify-center gap-3">
+            <TabsTrigger value="transcript" className={"bg-primary-100"}>
               <Mic size={16} /> Transcript
             </TabsTrigger>
-            <TabsTrigger value="context">
+            <TabsTrigger value="context" className={"bg-primary-100"}>
               <MessageCircle size={16} /> Context
             </TabsTrigger>
-            <TabsTrigger value="note">
+            <TabsTrigger value="note" className={"bg-primary-100"}>
               <NotebookPen size={16} /> Note
             </TabsTrigger>
-            <TabsTrigger value="analysis">
+            <TabsTrigger value="analysis" className={"bg-primary-100"}>
               <ChartBar size={16} /> Analysis
             </TabsTrigger>
           </div>
