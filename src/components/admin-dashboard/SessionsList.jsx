@@ -1,70 +1,40 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setSelectedSessionId } from "@/store/sessionSlice"; // Corrected import name
+import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import SessionItem from "./SessionItem";
-import { fetchSessions } from "@/store/sessionSlice"; // Corrected import name
+import { useSession } from "@/hooks/useSession";
+import { scheduledSessions, pastSessions } from "@/lib/stub-data"; // Assuming you have a sessions.js file with this data
 
 const SessionsList = () => {
-  const dispatch = useDispatch();
+  const setSelectedSession = useSession((state) => state.setSelectedSession);
 
-  const { sessions, selectedSessionId, status, error } = useSelector(
-    (state) => state.session,
-  );
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchSessions());
-    }
-  }, [dispatch, status]);
-
-  if (status === "loading") {
-    return <div className="p-4 text-center">Loading...</div>;
-  }
-
-  if (status === "failed") {
-    return <div>Error: {error}</div>;
-  }
-
-  const now = new Date();
-  const withDateObj = sessions.map((s) => ({
-    ...s,
-    dateObj: new Date(s.date),
-  }));
-
-  const scheduledSessions = withDateObj
-    .filter((s) => s.dateObj >= now)
-    .sort((a, b) => a.dateObj - b.dateObj);
-
-  const pastSessions = withDateObj
-    .filter((s) => s.dateObj < now)
-    .sort((a, b) => b.dateObj - a.dateObj);
-
-  const handleSessionClick = (session) => {
-    dispatch(setSelectedSessionId(session.id));
+  // handleSessionClick is called when a session is clicked
+  // It sets the selected session ID in the global state
+  const handleSessionClick = (sessionId) => {
+    setSelectedSession(sessionId);
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <Tabs defaultValue="scheduled" className="w-full">
-        <TabsList className="border-primary-200 grid w-full grid-cols-2 border-b">
+    <div className="flex h-full w-full flex-1 flex-col gap-4 overflow-hidden">
+      <Tabs defaultValue="scheduled" className="w-full px-2">
+        <TabsList className="border-primary-200 bg-primary-100 grid h-fit w-full cursor-pointer grid-cols-2 py-2">
           <TabsTrigger value="scheduled">Scheduled</TabsTrigger>
           <TabsTrigger value="past">Past</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="scheduled">
+        <TabsContent value="scheduled" className={"h-full w-full"}>
           {scheduledSessions.length === 0 ? (
             <div className="p-4 text-center text-gray-500">
               No upcoming sessions.
             </div>
           ) : (
-            <ul className="flex flex-col divide-y divide-gray-200">
+            <ul className="flex h-full w-full flex-col divide-y divide-gray-200 overflow-scroll">
               {scheduledSessions.map((session) => (
                 <SessionItem
                   key={session.id}
                   title={session.title}
                   dateTime={session.dateObj}
-                  selected={selectedSessionId === session.id} // Use ID for comparison
-                  onClick={() => handleSessionClick(session)}
+                  // selected={selectedSessionId === session.id} // Use ID for comparison
+                  onClick={() => handleSessionClick(session.id)}
                 />
               ))}
             </ul>
@@ -83,7 +53,7 @@ const SessionsList = () => {
                   key={session.id}
                   title={session.title}
                   dateTime={session.dateObj}
-                  selected={selectedSessionId === session.id} // Use ID for comparison
+                  // selected={selectedSessionId === session.id} // Use ID for comparison
                   onClick={() => handleSessionClick(session)}
                 />
               ))}

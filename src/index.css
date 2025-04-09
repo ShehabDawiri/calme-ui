@@ -87,6 +87,7 @@ body {
   --color-primary-300: #adadaf; /* light gray */
   --color-primary-400: #4b545d; /* Dark gray */
   --color-primary-500: #131727; /* Darkest shade */
+  --color-hover-100: #e9e9e9; /* Hover gray */
 }
 
 @layer base {

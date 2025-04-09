@@ -7,15 +7,10 @@ export default function AdminDashboard() {
   return (
     <div className="h-[100dvh] w-[100dvw]">
       <AdminDashboardLayout>
-        {/* Header */}
-        <div className="grid h-full w-full grid-flow-row-dense grid-rows-30">
+        <div className="flex h-full w-full flex-col">
           <Header />
-          {/* Tab Menu */}
           <TabMenu />
-          {/* Footer Controls */}
-          <div className="bg-primary-100 border-primary-200 row-span-3 flex h-full w-full items-center justify-between border-t-1 px-4 py-4">
-            <ChatInput />
-          </div>
+          <ChatInput />
         </div>
       </AdminDashboardLayout>
     </div>
