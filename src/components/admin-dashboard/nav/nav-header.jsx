@@ -1,8 +1,11 @@
 import React from "react";
 import { NavUser } from "@/components/admin-dashboard/nav/nav-user";
 import { SidebarTrigger, SidebarHeader } from "@/components/ui/sidebar";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navheader = () => {
+  const { user } = useAuth0();
+
   return (
     <SidebarHeader
       className={
@@ -12,9 +15,9 @@ const Navheader = () => {
       <div className="flex items-center justify-center">
         <NavUser
           user={{
-            avatar: "/images/avatar.png",
-            name: "John Doe",
-            email: "johndoe@gmail.com",
+            avatar: user.picture,
+            name: user.name,
+            email: user.email,
           }}
         />
         <SidebarTrigger />
