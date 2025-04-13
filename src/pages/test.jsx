@@ -16,7 +16,7 @@ const TimelinePage = () => {
   // const title = selectedSession
   //   ? selectedSession.title
   //   : "No session available";
-  const gladiaId = "45463597-20b7-4af7-b3b3-f5fb778203ab"; // For testing purposes only
+  const gladiaId = "45bb4389-e6f4-4ba9-b853-58f0dabf086a"; // For testing purposes only
 
   return (
     <div className="flex h-screen items-center justify-center bg-[var(--color-primary-100)]">
