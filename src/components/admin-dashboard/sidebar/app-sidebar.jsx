@@ -13,6 +13,7 @@ import { PlusCircle, Bell, UserRoundSearch, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import Navfooter from "../nav/nav-footer";
 import Navheader from "../nav/nav-header";
+import { useModalStore } from "@/hooks/modalStore";
 
 export function AppSidebar({ ...props }) {
   const { open: isOpen } = useSidebar();
@@ -23,7 +24,10 @@ export function AppSidebar({ ...props }) {
         <div
           className={`relative flex ${isOpen ? "h-10 w-full px-2" : "h-fit flex-col"} bg-primary-100 w-full items-center justify-around gap-2`}
         >
-          <Button className={` ${isOpen ? "flex-1" : "size-8"} `}>
+          <Button
+            className={`${isOpen ? "flex-1" : "size-8"}`}
+            onClick={() => useModalStore.getState().openRecordModal()}
+          >
             <PlusCircle /> {isOpen && "New Session"}
           </Button>
           <Button

@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { Mic, MessageCircle, NotebookPen, ChartBar } from "lucide-react";
 import TimelinePage from "@/pages/test";
 import { useSession } from "@/hooks/useSession";
+import ContextPage from "@/components/context/context";
 
 const TabMenu = () => {
   // Fetch the session ID from the global state using the useSession hook
@@ -141,7 +142,9 @@ const TabMenu = () => {
             </div>
           </div>
         </TabsContent>
-        <TabsContent value="context"></TabsContent>
+        <TabsContent value="context">
+          <ContextPage />
+        </TabsContent>
         <TabsContent value="note"></TabsContent>
         <TabsContent value="analysis">
           <TimelinePage />

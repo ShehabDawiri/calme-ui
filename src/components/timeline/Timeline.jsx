@@ -4,7 +4,7 @@ import TimelineView from "./TimelineView.jsx";
 import GraphsView from "./GraphsView.jsx";
 import DataView from "./DataView.jsx";
 import EntitySummaryTab from "./InsightsView";
-import { getPreRecordedResult } from "@/api/gladiaAPI/audioTranscriber"; // Keep the API import
+import { getPreRecordedResult } from "@/api/gladiaAPI/audioTranscriber";
 import { Loader } from "../ui/loader.jsx";
 
 export const rowHeight = 50;
@@ -24,7 +24,7 @@ export default function Timeline({ gladiaId }) {
   const [selectedUtterance, setSelectedUtterance] = useState(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
-  const [data, setData] = useState(null); // Initially null to indicate data isn't loaded
+  const [data, setData] = useState(null);
   const [filters, setFilters] = useState({
     speakers: [],
     sentiments: [],
@@ -37,6 +37,7 @@ export default function Timeline({ gladiaId }) {
       try {
         const response = await getPreRecordedResult(gladiaId);
         setData(response);
+        console.log("Fetched data:", response);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
