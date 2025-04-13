@@ -1,11 +1,18 @@
 import { create } from "zustand";
+import { processAudio } from "@/api/gladiaAPI/audioTranscriber";
 
 export const useRecordStore = create((set, get) => ({
   isRecording: false,
+  isProcessing: false,
+  status: "idle",
+  result: null,
+  lang: "en",
   timer: 0,
   stream: null,
   mediaRecorder: null,
   intervalId: null,
+
+  setLang: (lang) => set({ lang }),
 
   startRecording: async (deviceId) => {
     try {
@@ -19,16 +26,44 @@ export const useRecordStore = create((set, get) => ({
         chunks.push(e.data);
       };
 
-      mediaRecorder.onstop = () => {
+      mediaRecorder.onstop = async () => {
         const blob = new Blob(chunks, { type: "audio/webm" });
         console.log("Audio blob:", blob);
-        // You can store or upload the blob here
+
+        set({ isProcessing: true, status: "processing" });
+
+        try {
+          const transcript = await processAudio(
+            blob,
+            { language: lang },
+            (step) => {
+              set({ status: step });
+            },
+          );
+
+          set({
+            result: transcript,
+            isProcessing: false,
+            status: "completed",
+          });
+        } catch (error) {
+          set({
+            isProcessing: false,
+            status: `error: ${error.message}`,
+            result: null,
+          });
+        }
       };
 
       mediaRecorder.start();
 
       const intervalId = setInterval(() => {
-        set((state) => ({ timer: state.timer + 1 }));
+        set((state) => {
+          if (state.status !== step) {
+            return { status: step };
+          }
+          return state;
+        });
       }, 1000);
 
       set({
@@ -37,9 +72,12 @@ export const useRecordStore = create((set, get) => ({
         mediaRecorder,
         intervalId,
         timer: 0,
+        status: "recording",
+        result: null,
       });
     } catch (err) {
       console.error("Error starting recording:", err);
+      set({ status: "error" });
     }
   },
 
@@ -54,6 +92,20 @@ export const useRecordStore = create((set, get) => ({
 
     set({
       isRecording: false,
+      stream: null,
+      mediaRecorder: null,
+      intervalId: null,
+      status: "stopping",
+    });
+  },
+
+  resetRecording: () => {
+    set({
+      isRecording: false,
+      isProcessing: false,
+      status: "idle",
+      result: null,
+      timer: 0,
       stream: null,
       mediaRecorder: null,
       intervalId: null,

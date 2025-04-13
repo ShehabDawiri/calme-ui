@@ -25,30 +25,29 @@ export async function uploadAudio(file) {
   return data;
 }
 
-export async function startPreRecordedJob(audioUrl) {
-  const payload = {
+export async function startPreRecordedJob(audioUrl, payload = {}) {
+  const finalPayload = {
     audio_url: audioUrl,
-    diarization: true,
-    detect_language: true,
-    sentiment_analysis: true,
-
-    enable_code_switching: true,
-    code_switching_config: {
+    diarization: payload.diarization ?? true,
+    detect_language: payload.detect_language ?? true,
+    language: payload.language ?? "en",
+    sentiment_analysis: payload.sentiment_analysis ?? true,
+    enable_code_switching: payload.enable_code_switching ?? true,
+    code_switching_config: payload.code_switching_config ?? {
       languages: ["ar", "en", "he"],
     },
-    // custom_vocabulary: true,
-    summarization: true,
-    summarization_config: {
+    summarization: payload.summarization ?? true,
+    summarization_config: payload.summarization_config ?? {
       type: "general",
     },
-    named_entity_recognition: true,
-
-    structured_data_extraction: true,
-    structured_data_extraction_config: {
-      classes: ["Persons", "Organizations"],
-    },
-    audio_to_llm: true,
-    audio_to_llm_config: {
+    named_entity_recognition: payload.named_entity_recognition ?? true,
+    structured_data_extraction: payload.structured_data_extraction ?? true,
+    structured_data_extraction_config:
+      payload.structured_data_extraction_config ?? {
+        classes: ["Persons", "Organizations"],
+      },
+    audio_to_llm: payload.audio_to_llm ?? true,
+    audio_to_llm_config: payload.audio_to_llm_config ?? {
       prompts: ["Extract the key points from the transcription"],
     },
   };
@@ -59,15 +58,14 @@ export async function startPreRecordedJob(audioUrl) {
       "x-gladia-key": API_KEY,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(finalPayload),
   };
 
   try {
     const response = await fetch(API_PRE_RECORDED_URL, options);
 
-    // Check if the response is valid before parsing JSON
     if (!response.ok) {
-      const errorData = await response.json(); // Get error details
+      const errorData = await response.json();
       throw new Error(errorData.message || "Failed to start processing");
     }
 
@@ -77,7 +75,6 @@ export async function startPreRecordedJob(audioUrl) {
     throw error;
   }
 }
-
 export async function getPreRecordedResult(jobId) {
   const options = {
     method: "GET",
@@ -101,7 +98,7 @@ export async function getPreRecordedResult(jobId) {
  * @param {Function} t - Translation function
  */
 
-export async function processAudio(file, updateStepCallback) {
+export async function processAudio(file, payload = {}, updateStepCallback) {
   try {
     updateStepCallback("Uploading audio...");
     const uploadResponse = await uploadAudio(file);
@@ -109,7 +106,7 @@ export async function processAudio(file, updateStepCallback) {
     console.log("Uploaded audio file:", uploadResponse);
 
     updateStepCallback("Starting processing...");
-    const jobResponse = await startPreRecordedJob(audioUrl);
+    const jobResponse = await startPreRecordedJob(audioUrl, payload);
     console.log("Started processing job:", jobResponse);
     const jobId = jobResponse.id;
 
