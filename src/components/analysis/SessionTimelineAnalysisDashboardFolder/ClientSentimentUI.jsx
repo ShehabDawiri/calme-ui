@@ -1,4 +1,5 @@
 import React, { useState ,useEffect } from 'react';
+import PercentageBar from './PercentageBar';
 
 async function fetchData() {
   try {
@@ -46,26 +47,35 @@ function ClientSentimentUI() {
                   <span className="text-black text-sm font-medium">Positive</span>
                   <span className="text-black text-sm font-medium">{Math.floor(positive_percentage)}%</span>
                   </div>
-                  <div className="w-64 bg-gray-200 rounded-full h-2.5  mb-2 w-300">
-                  <div className="bg-linear-65 from-purple-500 to-pink-500 h-2.5  rounded-full" style={{ width: `${positive_percentage}%` }}></div>
-                  </div>
+
+                  {/* <div className=" bg-gray-200 rounded-full h-2.5  mb-2 w-full">
+                  <div className="bg-linear-65 from-green-200 to-green-500 h-2.5  rounded-full" style={{ width: `${positive_percentage}%` }}></div>
+                  </div> */}
+
+                  <PercentageBar value={positive_percentage} startColor="green-200" endColor="green-500"/>
 
                   <div className="flex justify-between items-center p-1">
                   <span className="text-black text-sm font-medium">Negative</span>
                   <span className="text-black text-sm font-medium">{Math.floor(negative_percentage)}%</span>
                   </div>
 
-                  <div className="w-64 bg-gray-200 rounded-full h-2.5  mb-2 w-300">
-                  <div className="bg-linear-65 from-green-500 to-blue-500 h-2.5 rounded-full"  style={{ width: `${negative_percentage}%` }}></div>
-                  </div>
+                  {/* <div className="w-64 bg-gray-200 rounded-full h-2.5  mb-2 w-300">
+                  <div className="bg-linear-65 from-red-400 to-red-700 h-2.5 rounded-full"  style={{ width: `${negative_percentage}%` }}></div>
+                  </div> */}
 
+                  <PercentageBar value={negative_percentage} startColor="red-400" endColor="red-700"/>
+                  
                   <div className="flex justify-between items-center p-1 ">
                   <span className="text-black text-sm font-medium ">Neutral</span>
                   <span className="text-black text-sm font-medium ">{Math.floor(neutral_percentage)}%</span>
                   </div>
-                  <div className="w-64 bg-gray-200 rounded-full h-2.5  mb-4 w-300">
-                  <div className="bg-linear-65 from-gray-400 to-gray-700 h-2.5 rounded-full "  style={{ width: `${neutral_percentage}%` ,padding: "20"}}></div>
-                  </div>
+
+                  {/* <div className="w-64 bg-gray-200 rounded-full h-2.5  mb-4 w-300">
+                  <div className="bg-linear-65 from-blue-200 to-blue-600 h-2.5 rounded-full "  style={{ width: `${neutral_percentage}%` ,padding: "20"}}></div>
+                  </div> */}
+
+                  <PercentageBar value={neutral_percentage} startColor="blue-200" endColor="blue-600"/>
+
               </div>
 
             );

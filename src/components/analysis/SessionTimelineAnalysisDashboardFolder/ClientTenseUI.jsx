@@ -1,4 +1,5 @@
 import React, { useState ,useEffect } from 'react';
+import PercentageBar from './PercentageBar';
 
 async function fetchData() {
   try {
@@ -36,7 +37,6 @@ function ClientTenseUI() {
     // var past_percentage = 10
     // var present_percentage = 40
     var future_percentage = data["Future_Percentage"]*100
-    console.log(future_percentage)
           return (
             // <div className="justify-between items-center bg-white rounded-lg p-4 border-gray-300 shadow-md w-full" >
             <div className="justify-between items-center">
@@ -64,9 +64,13 @@ function ClientTenseUI() {
                   <span className="text-black text-sm font-medium ">Future</span>
                   <span className="text-black text-sm font-medium ">{Math.floor(future_percentage)}%</span>
                   </div>
-                  <div className="w-64 bg-gray-200 rounded-full h-2.5  mb-4 w-300">
-                  <div className="bg-linear-65 from-gray-400 to-gray-700 h-2.5 rounded-full "  style={{ width: `${future_percentage}%` ,padding: "20"}}></div>
-                  </div>
+
+                  {/* <div className="w-64 bg-gray-200 rounded-full h-2.5  mb-4 w-300">
+                  <div className="bg-linear-65 from-blue-400 to-purple-800 h-2.5 rounded-full "  style={{ width: `${future_percentage}%` ,padding: "20"}}></div>
+                  </div> */}
+
+                  <PercentageBar value={future_percentage} startColor="blue-400" endColor="purple-800"/>
+
               </div>
 
             );
