@@ -1,0 +1,91 @@
+.timeline-container {
+    font-family: Arial, sans-serif;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .timeline-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .time-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-left: 100px;
+  }
+  
+  .time-marker {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .timeline-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .row-label {
+    width: 100px;
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+  }
+  
+  .timeline-track {
+    flex: 1;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .timeline-segment {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    border-radius: 4px;
+  }
+  
+  .timeline-segment.clinician {
+    background-color: #3498db;
+  }
+  
+  .timeline-segment.member {
+    background-color: #2ecc71;
+  }
+  .timeline-segment.topic {
+    opacity: 0.7;
+    height: 30px;
+    top: -5px;
+  }
+  
+  .topics-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    color: black;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+  }
+  
+  .legend-label {
+    font-size: 13px;
+  }

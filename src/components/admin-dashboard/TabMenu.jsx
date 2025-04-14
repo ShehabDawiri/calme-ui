@@ -4,6 +4,7 @@ import { Mic, MessageCircle, NotebookPen, ChartBar } from "lucide-react";
 import TimelinePage from "@/pages/test";
 import { useSession } from "@/hooks/useSession";
 import ContextPage from "@/components/context/context";
+import Team1Main from "../analysis/Team1main";
 
 const TabMenu = () => {
   // Fetch the session ID from the global state using the useSession hook
@@ -146,8 +147,9 @@ const TabMenu = () => {
           <ContextPage />
         </TabsContent>
         <TabsContent value="note"></TabsContent>
-        <TabsContent value="analysis">
-          <TimelinePage />
+        <TabsContent value="analysis" 
+                     className="h-full w-full overflow-scroll">
+          <Team1Main />
         </TabsContent>
       </Tabs>
     </div>
