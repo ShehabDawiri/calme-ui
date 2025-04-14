@@ -5,12 +5,14 @@
 :root {
   /*  Color palette *needs to be migrated to the tailwind theme* */
 
-  --color-primary-100: #fdfefe; /* Lightest shade */
+  --color-primary-100: #fefefe; /* Lightest shade */
   --color-primary-200: #d1d2d3; /* Light pink */
   --color-primary-300: #adadaf; /* light gray */
   --color-primary-400: #4b545d; /* Dark gray */
   --color-primary-500: #131727; /* Darkest shade */
-
+  --color-accent-100: #e2f6ff; /* Darkest shade */
+  --color-accent-200: #c4ecff;
+  --color-background-100: #f8f9fb;
   /* Status colors */
   --color-success: #22c55e;
   --color-success-hover: #16a34a;
@@ -82,12 +84,15 @@ body {
 
 /* @import "tailwindcss/preflight"; */
 @theme {
-  --color-primary-100: #fdfefe; /* Lightest shade */
+  --color-primary-100: #fefefe; /* Lightest shade */
   --color-primary-200: #d1d2d3; /* Light pink */
   --color-primary-300: #adadaf; /* light gray */
   --color-primary-400: #4b545d; /* Dark gray */
   --color-primary-500: #131727; /* Darkest shade */
   --color-hover-100: #e9e9e9; /* Hover gray */
+  --color-accent-100: #6fd1ff;
+  --color-accent-200: #c4ecff;
+  --color-background-100: #f8f9fb; /* Lightest shade */
 }
 
 @layer base {
