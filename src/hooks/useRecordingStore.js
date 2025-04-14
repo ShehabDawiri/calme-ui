@@ -1,5 +1,34 @@
 import { create } from "zustand";
 import { processAudio } from "@/api/gladiaAPI/audioTranscriber";
+import { useState, useEffect, useRef } from "react";
+
+// function TimerControl() {
+//   const [count, setCount] = useState(0);
+//   const intervalRef = useRef(null); // store interval ID
+
+//   const start = () => {
+//     if (!intervalRef.current) {
+//       intervalRef.current = setInterval(() => {
+//         setCount((prev) => prev + 1);
+//       }, 1000);
+//     }
+//   };
+
+//   const stop = () => {
+//     clearInterval(intervalRef.current);
+//     intervalRef.current = null;
+//   };
+
+//   useEffect(() => {
+//     return () => stop(); // cleanup on unmount
+//   }, []);
+
+//   return {
+//     stopTimer: stop ,
+//     startTimer: start, 
+//     time: count
+//   };
+// }
 
 export const useRecordStore = create((set, get) => ({
   isRecording: false,
@@ -11,6 +40,7 @@ export const useRecordStore = create((set, get) => ({
   stream: null,
   mediaRecorder: null,
   intervalId: null,
+  timerInterval: null,
 
   setLang: (lang) => set({ lang }),
 
@@ -22,6 +52,12 @@ export const useRecordStore = create((set, get) => ({
       const mediaRecorder = new MediaRecorder(stream);
       const chunks = [];
 
+      const timerInterval = setInterval(() => {
+        const currentTimer = get().timer;
+        set({ timer: currentTimer + 1 });
+        console.log("one second passed");
+      }, 1000);
+
       mediaRecorder.ondataavailable = (e) => {
         chunks.push(e.data);
       };
@@ -30,9 +66,10 @@ export const useRecordStore = create((set, get) => ({
         const blob = new Blob(chunks, { type: "audio/webm" });
         console.log("Audio blob:", blob);
 
-        set({ isProcessing: true, status: "processing" });
-
+        set({ isProcessing: true, status: "processing"});
+        
         try {
+          clearInterval(get().timerInterval);
           const transcript = await processAudio(
             blob,
             { language: lang },
@@ -54,9 +91,9 @@ export const useRecordStore = create((set, get) => ({
           });
         }
       };
-
       mediaRecorder.start();
-
+      
+      
       const intervalId = setInterval(() => {
         set((state) => {
           if (state.status !== step) {
@@ -82,13 +119,14 @@ export const useRecordStore = create((set, get) => ({
   },
 
   stopRecording: () => {
-    const { mediaRecorder, stream, intervalId } = get();
+    const { mediaRecorder, stream, intervalId , timerInterval} = get();
 
     if (mediaRecorder) mediaRecorder.stop();
     if (stream) {
       stream.getTracks().forEach((track) => track.stop());
     }
     clearInterval(intervalId);
+    // clearInterval(timerInterval);
 
     set({
       isRecording: false,
@@ -109,6 +147,7 @@ export const useRecordStore = create((set, get) => ({
       stream: null,
       mediaRecorder: null,
       intervalId: null,
+      timerInterval: null,
     });
   },
 }));
