@@ -1,155 +1,48 @@
 import React from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { Mic, MessageCircle, NotebookPen, ChartBar } from "lucide-react";
-import TimelinePage from "@/pages/test";
-import { useSession } from "@/hooks/useSession";
-import ContextPage from "@/components/context/context";
+
+const tabs = [
+  { name: "Transcript", path: "transcript", icon: Mic },
+  { name: "Context", path: "context", icon: MessageCircle },
+  { name: "Note", path: "note", icon: NotebookPen },
+  { name: "Analysis", path: "analysis", icon: ChartBar },
+];
 
 const TabMenu = () => {
-  // Fetch the session ID from the global state using the useSession hook
-  // This ID is used to fetch session data and manage the current session
-  const sessionId = useSession((state) => state.sessionId);
+  const { sessionId } = useParams();
 
   return (
-    <div className="h-full w-full overflow-hidden">
-      <Tabs defaultValue="transcript" className="h-full w-full">
-        <TabsList className="flex h-fit w-full items-center justify-baseline rounded-none bg-transparent py-3">
-          <div className="text-primary-500 flex h-full w-fit items-center justify-center gap-3">
-            <TabsTrigger value="transcript" className={"bg-primary-100"}>
-              <Mic size={16} /> Transcript
-            </TabsTrigger>
-            <TabsTrigger value="context" className={"bg-primary-100"}>
-              <MessageCircle size={16} /> Context
-            </TabsTrigger>
-            <TabsTrigger value="note" className={"bg-primary-100"}>
-              <NotebookPen size={16} /> Note
-            </TabsTrigger>
-            <TabsTrigger value="analysis" className={"bg-primary-100"}>
-              <ChartBar size={16} /> Analysis
-            </TabsTrigger>
-          </div>
-        </TabsList>
-        <TabsContent
-          value="transcript"
-          className="h-full w-full overflow-scroll"
-        >
-          {/* stub data for development purposes only */}
-          <div className="wrapper h-full w-full">
-            <div className="px-4">
-              <div className="">
-                <h3 className="font-semibold">Subjective:</h3>
-                <ul className="list-disc pl-5 text-sm text-gray-700">
-                  <li>
-                    Reports feeling sad due to ongoing situation in Palestine
-                  </li>
-                  <li>
-                    Describes feeling exhausted, tired, experiencing frequent
-                    illness
-                  </li>
-                  <li>Reports survivor’s guilt regarding safety</li>
-                  <li>Mentally unstable while watching events</li>
-                  <li>Reports being criticized for appearance</li>
-                  <li>Lost long-term friendships due to situation</li>
-                </ul>
-              </div>
+    <div className="flex h-full flex-col px-4">
+      {/* Tab Navigation */}
+      <div className="relative mb-4 flex flex-wrap gap-2 p-2">
+        {tabs.map(({ name, path, icon: Icon }) => (
+          <NavLink
+            key={path}
+            to={`/admin-dashboard/${sessionId}/${path}`}
+            className={({ isActive }) =>
+              `group relative flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-300 ${
+                isActive
+                  ? "bg-white text-blue-700 shadow-md"
+                  : "text-gray-500 hover:bg-white hover:text-blue-600"
+              }`
+            }
+          >
+            <Icon
+              size={16}
+              className="transition-transform duration-200 group-hover:scale-110"
+            />
+            {name}
+          </NavLink>
+        ))}
+      </div>
 
-              <div className="">
-                <h3 className="font-semibold">Past Medical History:</h3>
-                <p className="text-sm text-gray-700">
-                  Reports recent illness lasting 2 weeks
-                </p>
-              </div>
-
-              <div className="">
-                <h3 className="font-semibold">Objective:</h3>
-                <ul className="list-disc pl-5 text-sm text-gray-700">
-                  <li>Presents as articulate, engaged</li>
-                  <li>Tearful when discussing grandmother</li>
-                  <li>Good insight into personal growth and values</li>
-                  <li>Strong sense of identity and purpose evident</li>
-                </ul>
-              </div>
-            </div>
-            <div className="rounded-md p-4">
-              <div className="">
-                <h3 className="font-semibold">Subjective:</h3>
-                <ul className="list-disc pl-5 text-sm text-gray-700">
-                  <li>
-                    Reports feeling sad due to ongoing situation in Palestine
-                  </li>
-                  <li>
-                    Describes feeling exhausted, tired, experiencing frequent
-                    illness
-                  </li>
-                  <li>Reports survivor’s guilt regarding safety</li>
-                  <li>Mentally unstable while watching events</li>
-                  <li>Reports being criticized for appearance</li>
-                  <li>Lost long-term friendships due to situation</li>
-                </ul>
-              </div>
-
-              <div className="">
-                <h3 className="font-semibold">Past Medical History:</h3>
-                <p className="text-sm text-gray-700">
-                  Reports recent illness lasting 2 weeks
-                </p>
-              </div>
-
-              <div className="">
-                <h3 className="font-semibold">Objective:</h3>
-                <ul className="list-disc pl-5 text-sm text-gray-700">
-                  <li>Presents as articulate, engaged</li>
-                  <li>Tearful when discussing grandmother</li>
-                  <li>Good insight into personal growth and values</li>
-                  <li>Strong sense of identity and purpose evident</li>
-                </ul>
-              </div>
-            </div>
-            <div className="rounded-md p-4">
-              <div className="">
-                <h3 className="font-semibold">Subjective:</h3>
-                <ul className="list-disc pl-5 text-sm text-gray-700">
-                  <li>
-                    Reports feeling sad due to ongoing situation in Palestine
-                  </li>
-                  <li>
-                    Describes feeling exhausted, tired, experiencing frequent
-                    illness
-                  </li>
-                  <li>Reports survivor’s guilt regarding safety</li>
-                  <li>Mentally unstable while watching events</li>
-                  <li>Reports being criticized for appearance</li>
-                  <li>Lost long-term friendships due to situation</li>
-                </ul>
-              </div>
-
-              <div className="">
-                <h3 className="font-semibold">Past Medical History:</h3>
-                <p className="text-sm text-gray-700">
-                  Reports recent illness lasting 2 weeks
-                </p>
-              </div>
-
-              <div className="">
-                <h3 className="font-semibold">Objective:</h3>
-                <ul className="list-disc pl-5 text-sm text-gray-700">
-                  <li>Presents as articulate, engaged</li>
-                  <li>Tearful when discussing grandmother</li>
-                  <li>Good insight into personal growth and values</li>
-                  <li>Strong sense of identity and purpose evident</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </TabsContent>
-        <TabsContent value="context">
-          <ContextPage />
-        </TabsContent>
-        <TabsContent value="note"></TabsContent>
-        <TabsContent value="analysis">
-          <TimelinePage />
-        </TabsContent>
-      </Tabs>
+      {/* Scrollable content area - Fixed */}
+      <div className="max-h-[calc(100vh-265px)] min-h-0 flex-1 overflow-auto rounded-xl border shadow">
+        <div className="h-full p-4">
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };

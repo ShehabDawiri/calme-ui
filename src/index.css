@@ -311,3 +311,21 @@ body {
   }
 }
 /* =================<ChatBot>============== */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Dark mode */
+.dark .dark\:bg-gray-800 {
+  background-color: #1f2937;
+}
+
+.dark .dark\:border-gray-700 {
+  border-color: #374151;
+}
