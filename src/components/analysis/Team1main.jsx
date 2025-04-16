@@ -1,6 +1,6 @@
 import AnalysisMain from './SessionTimelineAnalysisDashboardFolder/AnalysisMain.jsx'
 import SessionTimeline from './SessionTimelineVisualization/timeline.jsx'
-
+import TopWords from './Top10Words/TopWords.jsx';
 
 function Team1Main() {
           return (
@@ -9,6 +9,9 @@ function Team1Main() {
               <SessionTimeline />
               </div>
               <AnalysisMain />
+              <div>
+              <TopWords />
+              </div>
             </div>
             );
 }
