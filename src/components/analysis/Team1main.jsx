@@ -1,6 +1,7 @@
 import AnalysisMain from './SessionTimelineAnalysisDashboardFolder/AnalysisMain.jsx'
 import SessionTimeline from './SessionTimelineVisualization/timeline.jsx'
 import TopWords from './Top10Words/TopWords.jsx';
+import VennDiagramVisual from './VennDiagram/VennDiagramVisual.jsx';
 
 function Team1Main() {
           return (
@@ -11,6 +12,9 @@ function Team1Main() {
               <AnalysisMain />
               <div>
               <TopWords />
+              </div>
+              <div>
+              <VennDiagramVisual />  
               </div>
             </div>
             );

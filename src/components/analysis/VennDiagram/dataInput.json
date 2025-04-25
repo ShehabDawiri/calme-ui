@@ -1,0 +1,24 @@
+[
+      {
+        "title": "Relationships themes",
+        "category": "relationships",
+        "data": [
+          { "label": "Parents", "value": 4 },
+          { "label": "Mother", "value": 2 },
+          { "label": "Father", "value": 2 },
+          { "label": "Friend", "value": 3 },
+          { "label": "Parents Mother", "value": 1 },
+          { "label": "Parents Father", "value": 1 },
+          { "label": "Parents Friend", "value": 2 },
+          { "label": "Mother Father", "value": 2 },
+          { "label": "Mother Friend", "value": 0 },
+          { "label": "Father Friend", "value": 0 },
+          { "label": "Parents Mother Father", "value": 0 },
+          { "label": "Parents Mother Friend", "value": 0 },
+          { "label": "Parents Father Friend", "value": 0 },
+          { "label": "Mother Father Friend", "value": 0 },
+          { "label": "Parents Mother Father Friend", "value": 0 }
+        ],
+        "explanation": "This Venn diagram shows the overlap and relationships between different family members and friends. The size of each circle represents the frequency or importance of discussions about that person."
+      }
+]

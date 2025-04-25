@@ -47,6 +47,7 @@
     "react-router-dom": "^7.3.0",
     "react-select": "^5.10.1",
     "react-use": "^17.6.0",
+    "reaviz": "^16.0.4",
     "recharts": "^2.15.2",
     "reselect": "^5.1.1",
     "tailwind-merge": "^3.0.2",

@@ -43,11 +43,13 @@ const TopWords = () => {
   return (
     <div className="p-6 bg-white rounded-lg shadow-md border border-gray-200">
       <h2 className="text-xl  font-bold mb-4 text-gray-800">Top 10 Words</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 place-items-center">
+      {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 place-items-center"> */}
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(170px,_1fr))] gap-2">
+        
         {topWordsData.map((item, index) => (
           <div
             key={index}
-            className="relative text-center p-3 rounded-lg hover:shadow-md transition-all group" 
+            className="m-2 relative text-center p-3 rounded-lg hover:shadow-md transition-all group" 
             style={{ 
               backgroundColor: colorsBG[index],
               width: '170px',  // Fixed width for rectangle shape
