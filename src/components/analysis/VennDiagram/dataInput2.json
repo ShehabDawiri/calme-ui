@@ -1,0 +1,142 @@
+[
+    {
+      "title": "Relationships themes",
+      "category": "relationships",
+      "data": [
+        { "label": "Parents", "value": 4 },
+        { "label": "Mother", "value": 2 },
+        { "label": "Father", "value": 2 },
+        { "label": "Friend", "value": 3 },
+        { "label": "Parents & Mother", "value": 1 },
+        { "label": "Parents & Father", "value": 1 },
+        { "label": "Parents & Friend", "value": 2 },
+        { "label": "Mother & Father", "value": 2 },
+        { "label": "Mother & Friend", "value": 0 },
+        { "label": "Father & Friend", "value": 0 },
+        { "label": "Parents & Mother & Father", "value": 0 },
+        { "label": "Parents & Mother & Friend", "value": 0 },
+        { "label": "Parents & Father & Friend", "value": 0 },
+        { "label": "Mother & Father & Friend", "value": 0 },
+        { "label": "Parents & Mother & Father & Friend", "value": 0 }
+      ],
+      "explanation": "This Venn diagram shows the overlap and relationships between different family members and friends. The size of each circle represents the frequency or importance of discussions about that person."
+    },
+    {
+      "title": "Anxiety themes",
+      "category": "anxiety",
+      "data": [
+        { "label": "Stress", "value": 11 },
+        { "label": "Fear", "value": 1 },
+        { "label": "Worry", "value": 1 },
+        { "label": "Overwhelming", "value": 2 },
+        { "label": "Scream", "value": 1 },
+        { "label": "Stress & Fear", "value": 1 },
+        { "label": "Stress & Worry", "value": 1 },
+        { "label": "Stress & Overwhelming", "value": 1 },
+        { "label": "Stress & Scream", "value": 1 },
+        { "label": "Fear & Worry", "value": 0 },
+        { "label": "Fear & Overwhelming", "value": 0 },
+        { "label": "Fear & Scream", "value": 0 },
+        { "label": "Worry & Overwhelming", "value": 0 },
+        { "label": "Worry & Scream", "value": 0 },
+        { "label": "Overwhelming & Scream", "value": 0 },
+        { "label": "Stress & Fear & Worry", "value": 0 },
+        { "label": "Stress & Fear & Overwhelming", "value": 0 },
+        { "label": "Stress & Fear & Scream", "value": 0 },
+        { "label": "Stress & Worry & Overwhelming", "value": 0 },
+        { "label": "Stress & Worry & Scream", "value": 0 },
+        { "label": "Stress & Overwhelming & Scream", "value": 0 },
+        { "label": "Fear & Worry & Overwhelming", "value": 0 },
+        { "label": "Fear & Worry & Scream", "value": 0 },
+        { "label": "Fear & Overwhelming & Scream", "value": 0 },
+        { "label": "Worry & Overwhelming & Scream", "value": 0 },
+        { "label": "Stress & Fear & Worry & Overwhelming", "value": 0 },
+        { "label": "Stress & Fear & Worry & Scream", "value": 0 },
+        { "label": "Stress & Fear & Overwhelming & Scream", "value": 0 },
+        { "label": "Stress & Worry & Overwhelming & Scream", "value": 0 },
+        { "label": "Fear & Worry & Overwhelming & Scream", "value": 0 },
+        { "label": "Stress & Fear & Worry & Overwhelming & Scream", "value": 0 }
+      ],
+      "explanation": "This bubble chart illustrates various anxiety-related themes. The size of each bubble represents the frequency or intensity of the theme in therapy sessions."
+    },
+    {
+      "title": "Depression themes",
+      "category": "depression",
+      "data": [
+        { "label": "Guilt", "value": 2 },
+        { "label": "Sadness", "value": 1 },
+        { "label": "Burden", "value": 1 },
+        { "label": "Unhappiness", "value": 1 },
+        { "label": "Guilt & Sadness", "value": 1 },
+        { "label": "Guilt & Burden", "value": 1 },
+        { "label": "Guilt & Unhappiness", "value": 1 },
+        { "label": "Sadness & Burden", "value": 1 },
+        { "label": "Sadness & Unhappiness", "value": 0 },
+        { "label": "Burden & Unhappiness", "value": 0 },
+        { "label": "Guilt & Sadness & Burden", "value": 0 },
+        { "label": "Guilt & Sadness & Unhappiness", "value": 0 },
+        { "label": "Guilt & Burden & Unhappiness", "value": 0 },
+        { "label": "Sadness & Burden & Unhappiness", "value": 0 },
+        { "label": "Guilt & Sadness & Burden & Unhappiness", "value": 0 }
+      ],
+      "explanation": "This Venn diagram displays the interconnected nature of depression-related themes. Overlapping areas indicate how these themes often co-occur or influence each other."
+    },
+    {
+      "title": "Trauma Reactions",
+      "category": "trauma",
+      "data": [
+        { "label": "Flashbacks", "value": 6 },
+        { "label": "Avoidance", "value": 7 },
+        { "label": "Hypervigilance", "value": 3 },
+        { "label": "Nightmares", "value": 5 },
+        { "label": "Flashbacks & Avoidance", "value": 3 },
+        { "label": "Flashbacks & Hypervigilance", "value": 2 },
+        { "label": "Flashbacks & Nightmares", "value": 2 },
+        { "label": "Avoidance & Hypervigilance", "value": 2 },
+        { "label": "Avoidance & Nightmares", "value": 1 },
+        { "label": "Hypervigilance & Nightmares", "value": 1 },
+        { "label": "Flashbacks & Avoidance & Hypervigilance", "value": 1 },
+        { "label": "Flashbacks & Avoidance & Nightmares", "value": 1 },
+        { "label": "Flashbacks & Hypervigilance & Nightmares", "value": 1 },
+        { "label": "Avoidance & Hypervigilance & Nightmares", "value": 1 },
+        { "label": "Flashbacks & Avoidance & Hypervigilance & Nightmares", "value": 1 }
+      ],
+      "explanation": "This diagram shows common trauma reactions and their relationships. The size of each circle indicates the prevalence or intensity of each reaction in the client's experience."
+    },
+    {
+      "title": "Self-Esteem Challenges",
+      "category": "self-esteem",
+      "data": [
+        { "label": "Self-doubt", "value": 6 },
+        { "label": "Insecurity", "value": 4 },
+        { "label": "Criticism", "value": 4 },
+        { "label": "Self-doubt & Insecurity", "value": 0 },
+        { "label": "Self-doubt & Criticism", "value": 0 },
+        { "label": "Insecurity & Criticism", "value": 2 },
+        { "label": "Self-doubt & Insecurity & Criticism", "value": 0 }
+      ],
+      "explanation": "This visualization represents various aspects of self-esteem challenges. The overlapping areas suggest how these challenges are often interrelated and can reinforce each other."
+    },
+    {
+      "title": "Coping Skills",
+      "category": "coping",
+      "data": [
+        { "label": "Mindfulness", "value": 4 },
+        { "label": "Exercise", "value": 2 },
+        { "label": "Journaling", "value": 2 },
+        { "label": "Deep Breathing", "value": 2 },
+        { "label": "Mindfulness & Exercise", "value": 0 },
+        { "label": "Mindfulness & Journaling", "value": 0 },
+        { "label": "Mindfulness & Deep Breathing", "value": 0 },
+        { "label": "Exercise & Journaling", "value": 0 },
+        { "label": "Exercise & Deep Breathing", "value": 0 },
+        { "label": "Journaling & Deep Breathing", "value": 0 },
+        { "label": "Mindfulness & Exercise & Journaling", "value": 0 },
+        { "label": "Mindfulness & Exercise & Deep Breathing", "value": 0 },
+        { "label": "Mindfulness & Journaling & Deep Breathing", "value": 0 },
+        { "label": "Exercise & Journaling & Deep Breathing", "value": 0 },
+        { "label": "Mindfulness & Exercise & Journaling & Deep Breathing", "value": 0 }
+      ],
+      "explanation": "This diagram illustrates different coping skills discussed or practiced in therapy. The size of each circle represents the frequency of use or effectiveness of each skill."
+    }
+  ]
