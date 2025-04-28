@@ -6,7 +6,7 @@ import RecordModal from "@/components/modal/RecordModal";
 export default function AdminDashboardLayout({ children }) {
   return (
     <SidebarProvider>
-      <AppSidebar className="hidden lg:flex" collapsible="icon"></AppSidebar>
+      <AppSidebar className="hidden lg:flex" collapsible="icon" />
       <main className="flex h-screen w-full flex-col">{children}</main>
       <RecordModal />
     </SidebarProvider>

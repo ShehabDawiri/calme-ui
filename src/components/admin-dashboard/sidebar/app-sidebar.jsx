@@ -14,9 +14,13 @@ import { Button } from "@/components/ui/Button";
 import Navfooter from "../nav/nav-footer";
 import Navheader from "../nav/nav-header";
 import { useModalStore } from "@/hooks/modalStore";
+import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { CollapsibleContent } from "@radix-ui/react-collapsible";
+import SessionsList from "../SessionsList";
 
 export function AppSidebar({ ...props }) {
   const { open: isOpen } = useSidebar();
+  const [sessionsOpen, setsessionsOpen] = React.useState(false);
   return (
     <Sidebar collapsible="icon" {...props}>
       <Navheader />
@@ -37,17 +41,32 @@ export function AppSidebar({ ...props }) {
           </Button>
         </div>
         <div className="flex w-full items-center justify-center px-2">
-          <Button
-            className={`${isOpen ? "h-fit w-full" : "size-8"} border-primary-200 bg-accent-100 text-primary-400 hover:bg-accent-200 focus:ring-primary-500 focus:ring-opacity-50 flex cursor-pointer items-center justify-center rounded-md`}
+          <Collapsible
+            className="w-full"
+            open={sessionsOpen && isOpen}
+            onOpenChange={setsessionsOpen}
           >
-            <div
-              className={`${isOpen ? "flex h-full w-full items-center gap-2 overflow-hidden text-nowrap" : null} `}
-            >
-              <UserRoundSearch />
-              {isOpen && <p>Show sessions</p>}
-            </div>
-            {isOpen && <ChevronRight />}
-          </Button>
+            <CollapsibleTrigger className="w-full">
+              <Button
+                className={`${isOpen ? "h-fit w-full" : "size-8"} border-primary-200 bg-accent-100 text-primary-400 hover:bg-accent-200 focus:ring-primary-500 focus:ring-opacity-50 flex cursor-pointer items-center justify-center rounded-md`}
+              >
+                <div
+                  className={`${isOpen ? "flex h-full w-full items-center gap-2 overflow-hidden text-nowrap" : null} `}
+                >
+                  <UserRoundSearch />
+                  {isOpen && <p>Show sessions</p>}
+                </div>
+                {isOpen && (
+                  <ChevronRight
+                    className={`${sessionsOpen ? "rotate-90" : null} transition-transform duration-200`}
+                  />
+                )}
+              </Button>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="w-full">
+              <SessionsList />
+            </CollapsibleContent>
+          </Collapsible>
         </div>
         <NavMain />
       </SidebarContent>

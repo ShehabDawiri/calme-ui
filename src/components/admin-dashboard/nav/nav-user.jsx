@@ -3,7 +3,6 @@ import {
   Bell,
   ChevronDown,
   CreditCard,
-  Sparkles,
   LogOut as LogOutIcon,
 } from "lucide-react";
 
@@ -27,7 +26,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export function NavUser({ user }) {
   const { isMobile } = useSidebar();
-  const { logout } = useAuth0(); 
+  const { logout } = useAuth0();
 
   return (
     <SidebarMenu>
@@ -68,13 +67,7 @@ export function NavUser({ user }) {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
+            <DropdownMenuGroup></DropdownMenuGroup>
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <BadgeCheck />

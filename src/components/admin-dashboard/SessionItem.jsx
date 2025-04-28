@@ -6,7 +6,7 @@ const SessionItem = ({ title, dateTime, selected, onClick }) => {
       className={`hover:bg-hover-100 cursor-pointer py-1.25 pl-3 ${selected ? "bg-primary-200" : ""}`}
       onClick={onClick}
     >
-      <p className="text-lg font-semibold">{title}</p>
+      <p className="text-md font-semibold">{title}</p>
       <p className="text-primary-400 text-xs">{dateTime.toLocaleString()}</p>
     </div>
   );
