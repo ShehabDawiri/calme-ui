@@ -1,3 +1,4 @@
+// src/hooks/useRecordingStore.js
 import { create } from "zustand";
 import { processAudio } from "@/api/gladiaAPI/audioTranscriber";
 
@@ -28,17 +29,16 @@ export const useRecordStore = create((set, get) => ({
 
       mediaRecorder.onstop = async () => {
         const blob = new Blob(chunks, { type: "audio/webm" });
-        console.log("Audio blob:", blob);
-
+        
         set({ isProcessing: true, status: "processing" });
 
         try {
           const transcript = await processAudio(
             blob,
-            { language: lang },
+            { language: get().lang },
             (step) => {
               set({ status: step });
-            },
+            }
           );
 
           set({
@@ -111,4 +111,24 @@ export const useRecordStore = create((set, get) => ({
       intervalId: null,
     });
   },
+
+  processAndStoreAudio: async (blob) => {
+    try {
+      set({ isProcessing: true, status: "processing" });
+      const result = await processAudio(
+        blob,
+        { language: get().lang },
+        (step) => set({ status: step })
+      );
+      set({ result, isProcessing: false, status: "stored" });
+      return result;
+    } catch (error) {
+      set({ 
+        isProcessing: false,
+        status: `error: ${error.message}`,
+        result: null
+      });
+      throw error;
+    }
+  }
 }));

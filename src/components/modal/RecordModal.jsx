@@ -10,8 +10,8 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { useSession } from "@/hooks/useSession";
-
 import { useRecordStore } from "@/hooks/useRecordingStore";
+import { processAudio } from "@/api/gladiaApi/audioTranscriber";
 import { v4 as uuidv4 } from "uuid";
 
 export default function RecordModal() {
@@ -21,111 +21,26 @@ export default function RecordModal() {
   const [language, setLanguage] = useState("en");
   const [microphones, setMicrophones] = useState([]);
   const [selectedMicrophone, setSelectedMicrophone] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [transcript, setTranscript] = useState("");
   const fileInputRef = useRef(null);
 
   const { isRecording, startRecording, stopRecording, setLang } =
     useRecordStore();
-  const languageMap = {
-    af: "Afrikaans",
-    sq: "Albanian",
-    am: "Amharic",
-    ar: "Arabic",
-    hy: "Armenian",
-    as: "Assamese",
-    az: "Azerbaijani",
-    ba: "Bashkir",
-    eu: "Basque",
-    be: "Belarusian",
-    bn: "Bengali",
-    bs: "Bosnian",
-    br: "Breton",
-    bg: "Bulgarian",
-    ca: "Catalan",
-    zh: "Chinese",
-    hr: "Croatian",
-    cs: "Czech",
-    da: "Danish",
-    nl: "Dutch",
-    en: "English",
-    et: "Estonian",
-    fo: "Faroese",
-    fi: "Finnish",
-    fr: "French",
-    gl: "Galician",
-    ka: "Georgian",
-    de: "German",
-    el: "Greek",
-    gu: "Gujarati",
-    ht: "Haitian Creole",
-    ha: "Hausa",
-    haw: "Hawaiian",
-    he: "Hebrew",
-    hi: "Hindi",
-    hu: "Hungarian",
-    is: "Icelandic",
-    id: "Indonesian",
-    it: "Italian",
-    ja: "Japanese",
-    jv: "Javanese",
-    kn: "Kannada",
-    kk: "Kazakh",
-    km: "Khmer",
-    ko: "Korean",
-    lo: "Lao",
-    la: "Latin",
-    lv: "Latvian",
-    ln: "Lingala",
-    lt: "Lithuanian",
-    lb: "Luxembourgish",
-    mk: "Macedonian",
-    mg: "Malagasy",
-    ms: "Malay",
-    ml: "Malayalam",
-    mt: "Maltese",
-    mi: "Maori",
-    mr: "Marathi",
-    mn: "Mongolian",
-    mymr: "Burmese",
-    ne: "Nepali",
-    no: "Norwegian",
-    nn: "Norwegian Nynorsk",
-    oc: "Occitan",
-    ps: "Pashto",
-    fa: "Persian",
-    pl: "Polish",
-    pt: "Portuguese",
-    pa: "Punjabi",
-    ro: "Romanian",
-    ru: "Russian",
-    sa: "Sanskrit",
-    sr: "Serbian",
-    sn: "Shona",
-    sd: "Sindhi",
-    si: "Sinhala",
-    sk: "Slovak",
-    sl: "Slovenian",
-    so: "Somali",
-    es: "Spanish",
-    su: "Sundanese",
-    sw: "Swahili",
-    sv: "Swedish",
-    tl: "Tagalog",
-    tg: "Tajik",
-    ta: "Tamil",
-    tt: "Tatar",
-    te: "Telugu",
-    th: "Thai",
-    bo: "Tibetan",
-    tr: "Turkish",
-    tk: "Turkmen",
-    uk: "Ukrainian",
-    ur: "Urdu",
-    uz: "Uzbek",
-    vi: "Vietnamese",
-    cy: "Welsh",
-    yi: "Yiddish",
-    yo: "Yoruba",
-    jp: "Japanese", // Note: 'jp' should technically be 'ja' for Japanese
+
+  const languageMap = { 
+    "en": "English",
+    "fr": "French",
+    "es": "Spanish",
+    "de": "German",
+    "it": "Italian",
+    "pt": "Portuguese",
+    "nl": "Dutch",
+    "hi": "Hindi",
+    "ja": "Japanese",
+    "zh": "Chinese",
+    "ru": "Russian",
+    "ar": "Arabic"
   };
 
   useEffect(() => {
@@ -134,7 +49,7 @@ export default function RecordModal() {
         await navigator.mediaDevices.getUserMedia({ audio: true });
         const devices = await navigator.mediaDevices.enumerateDevices();
         const audioDevices = devices.filter(
-          (device) => device.kind === "audioinput",
+          (device) => device.kind === "audioinput"
         );
         setMicrophones(audioDevices);
         if (audioDevices.length > 0) {
@@ -154,7 +69,7 @@ export default function RecordModal() {
     try {
       const devices = await navigator.mediaDevices.enumerateDevices();
       const audioDevices = devices.filter(
-        (device) => device.kind === "audioinput",
+        (device) => device.kind === "audioinput"
       );
       setMicrophones(audioDevices);
     } catch (error) {
@@ -166,17 +81,86 @@ export default function RecordModal() {
     fileInputRef.current.click();
   };
 
-  const handleFileChange = (event) => {
+  // Function to save complete Gladia response to MongoDB
+  const saveTranscriptToDatabase = async (gladiaResponse) => {
+    try {
+       // Debug:
+      console.log("Raw Gladia response:", gladiaResponse, typeof gladiaResponse);
+
+      const sessionId = uuidv4();
+      const response = await fetch('http://127.0.0.1:5000/api/transcript/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          session_id: sessionId,
+          therapist_id: "1", // You can replace this with actual therapist ID
+          user_id: "2", // Replace with actual user ID
+          gladia_response: gladiaResponse, // Store the entire Gladia API response
+          language: language
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save transcript');
+      }
+
+      const result = await response.json();
+      console.log('Transcript saved:', result);
+      return result;
+    } catch (error) {
+      console.error('Error saving transcript:', error);
+      throw error;
+    }
+  };
+
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
-      if (mode === "dictate") {
-        console.log("Processing file for dictation:", file);
+      setLoading(true);
+      setTranscript("");
+      try {
+        // Process the audio file using Gladia API
+        const gladiaResponse = await processAudio(
+          file,
+          { language },
+          (step) => console.log(step)
+        );
+        
+        // Extract transcript text for display
+        let transcriptText = "";
+        if (gladiaResponse && gladiaResponse.result && gladiaResponse.result.transcription) {
+          transcriptText = gladiaResponse.result.transcription.full_transcript || 
+                        "Transcript unavailable";
+        } else if (typeof gladiaResponse === 'string') {
+          transcriptText = gladiaResponse;
+        }
+        
+        setTranscript(transcriptText);
+        
+        // Save the complete Gladia response to MongoDB
+        await saveTranscriptToDatabase(gladiaResponse);
+      } catch (error) {
+        console.error("Error processing file:", error.message);
+        setTranscript(`Error: ${error.message}`);
+      } finally {
+        setLoading(false);
       }
     }
   };
-  const handleStartSession = () => {
+
+  const handleStartSession = async () => {
     if (isRecording) {
-      stopRecording();
+      const recordingData = await stopRecording();
+      if (recordingData) {
+        // Save the full recording data to MongoDB
+        try {
+          await saveTranscriptToDatabase(recordingData);
+        } catch (error) {
+          console.error("Error saving transcript:", error);
+        }
+      }
     } else {
       setLang(language);
       const newSessionId = uuidv4();
@@ -197,7 +181,7 @@ export default function RecordModal() {
           : "Upload a file for dictation"
       }
     >
-      {/* Mode toggle buttons */}
+      {/* Mode toggle */}
       <div className="mb-6 flex justify-center gap-2">
         <Button
           variant={mode === "transcribe" ? "default" : "outline"}
@@ -213,9 +197,9 @@ export default function RecordModal() {
         </Button>
       </div>
 
-      {/* Language selection */}
+      {/* Language select */}
       <div className="mb-4 text-center text-base font-medium text-gray-700">
-        {mode === "transcribe" ? "Transcribing" : "Dictating"} in{" "}
+        {mode === "transcribe" ? "Transcribing" : "Dictating"} in{' '}
         <Select value={language} onValueChange={setLanguage}>
           <SelectTrigger className="inline-flex w-fit">
             <SelectValue placeholder="Select language" />
@@ -230,49 +214,38 @@ export default function RecordModal() {
         </Select>
       </div>
 
-      {/* Mode-specific content */}
       {mode === "transcribe" ? (
+        // Transcribe UI
         <>
-          <h1 className="mb-4 text-center text-xl font-semibold">
-            Set your microphone, hit record, and we'll generate a perfect note
-          </h1>
-
-          <Select
-            value={selectedMicrophone}
-            onValueChange={setSelectedMicrophone}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select a microphone" />
-            </SelectTrigger>
-            <SelectContent>
-              {microphones.map((microphone) => (
-                <SelectItem
-                  key={microphone.deviceId}
-                  value={microphone.deviceId}
-                >
-                  {microphone.label ||
-                    `Microphone ${microphone.deviceId.slice(0, 5)}`}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
-          <p className="mt-3 text-center text-xs text-gray-500">
-            System audio will also be transcribed to support telehealth sessions
-            <br />
-            Not seeing your devices?{" "}
-            <button
-              onClick={refreshMicrophones}
-              className="cursor-pointer text-blue-600 underline"
-            >
-              Refresh here
-            </button>
-          </p>
+          <div className="mb-4">
+            <h3 className="mb-2 text-sm font-medium">Select Microphone</h3>
+            <div className="flex items-center gap-2">
+              <Select
+                value={selectedMicrophone}
+                onValueChange={setSelectedMicrophone}
+              >
+                <SelectTrigger className="flex-1">
+                  <SelectValue placeholder="Select microphone" />
+                </SelectTrigger>
+                <SelectContent>
+                  {microphones.map((mic) => (
+                    <SelectItem key={mic.deviceId} value={mic.deviceId}>
+                      {mic.label || `Microphone ${mic.deviceId.slice(0, 5)}`}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Button variant="outline" size="sm" onClick={refreshMicrophones}>
+                Refresh
+              </Button>
+            </div>
+          </div>
         </>
       ) : (
+        // Dictation/upload UI
         <>
           <h1 className="mb-4 text-center text-xl font-semibold">
-            Upload your audio file and we'll convert it to text
+            Upload your audio/video file and we'll convert it to text
           </h1>
 
           <div className="mb-6 flex flex-col items-center gap-3">
@@ -281,37 +254,40 @@ export default function RecordModal() {
               ref={fileInputRef}
               onChange={handleFileChange}
               className="hidden"
-              accept="audio/*,video/*, .doc, .docx, .pdf"
+              accept="audio/*,video/*"
             />
-            <Button
-              variant="outline"
-              onClick={handleFileUpload}
-              className="w-full"
-            >
+            <Button variant="outline" onClick={handleFileUpload}>
               Choose File
             </Button>
             <p className="text-xs text-gray-500">
-              Supported formats: MP3, WAV, DOC, PDF, and more
+              Supported formats: MP3, WAV, MP4, MOV, etc.
             </p>
           </div>
+
+          {/* Display loading or transcript */}
+          {loading ? (
+            <p className="text-center">Processing...</p>
+          ) : transcript ? (
+            <div className="p-4 bg-gray-100 rounded-lg max-h-60 overflow-auto">
+              <pre className="whitespace-pre-wrap">{transcript}</pre>
+            </div>
+          ) : null}
         </>
       )}
 
-      {/* Primary action */}
-      <Button
-        className="mt-6 w-full"
-        onClick={mode === "transcribe" ? handleStartSession : handleFileUpload}
-      >
-        {mode === "transcribe"
-          ? isRecording
-            ? "Stop Recording"
-            : "Start Recording"
-          : "Upload File for Dictation"}
-      </Button>
+      {/* Primary action for recording */}
+      {mode === "transcribe" && (
+        <Button
+          className="mt-6 w-full"
+          onClick={handleStartSession}
+        >
+          {isRecording ? 'Stop Recording' : 'Start Recording'}
+        </Button>
+      )}
 
       {/* Alternative action */}
       <div className="mt-4 text-center text-sm">
-        Or{" "}
+        Or{' '}
         <button
           onClick={() =>
             setMode(mode === "transcribe" ? "dictate" : "transcribe")

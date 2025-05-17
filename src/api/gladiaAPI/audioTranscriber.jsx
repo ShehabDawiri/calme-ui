@@ -138,7 +138,7 @@ export async function processAudio(file, payload = {}, updateStepCallback) {
       throw new Error("No transcript was generated.");
     }
 
-    return transcript;
+    return result;
   } catch (error) {
     console.error("Error during processing:", error.message);
     updateStepCallback(`Upload failed: ${error.message}`);
