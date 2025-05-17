@@ -6,6 +6,7 @@ import { useSession } from "@/hooks/useSession";
 import ContextPage from "@/components/context/context";
 import Team1Main from "../analysis/Team1main";
 import TranscriptPage from "../transcript/transcript";
+import NotePage from "../note/note";
 
 const TabMenu = () => {
   // Fetch the session ID from the global state using the useSession hook
@@ -41,7 +42,9 @@ const TabMenu = () => {
 
           <ContextPage />
         </TabsContent>
-        <TabsContent value="note"></TabsContent>
+        <TabsContent value="note">
+          <NotePage />
+        </TabsContent>
         <TabsContent value="analysis" 
                      className="h-full w-full overflow-scroll">
           <Team1Main />

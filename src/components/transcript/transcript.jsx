@@ -1,31 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSession } from "@/hooks/useSession";
 
 export default function TranscriptPage() {
-  // const { session_id } = useParams();
-  // const session_id ="f2e95410-d717-4db7-a838-da770173dda6"
-  const { session_id } = useParams();
+  // const { selectedSession: session_id } = useSession();
+  // console.log("sessionId TP +=>",session_id);
+  const { selectedSession: session_id } = useSession();
+  console.log("selectedSession in TranscriptPage:", session_id);
   const [segments, setSegments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    if (!session_id) {
+      setError("No session selected.");
+      setLoading(false);
+      return;
+    }
+
     const fetchTranscript = async () => {
       try {
         const res = await fetch(`http://127.0.0.1:5000/api/transcript/${session_id}`);
         const data = await res.json();
-
+        console.log("Fetched transcript data:", data); // ← ADD THIS
+        // if (res.ok && data.gladia_response?.results) {
+        //   setSegments(data.gladia_response.results);
         if (res.ok && data.results) {
           setSegments(data.results);
         } else {
           setError("Transcript not found or not yet processed.");
         }
-      } catch (err) {
+      } catch {
         setError("Failed to fetch transcript.");
       } finally {
         setLoading(false);
       }
     };
+
 
     fetchTranscript();
   }, [session_id]);

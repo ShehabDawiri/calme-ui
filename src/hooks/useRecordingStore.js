@@ -1,4 +1,3 @@
-// src/hooks/useRecordingStore.js
 import { create } from "zustand";
 import { processAudio } from "@/api/gladiaAPI/audioTranscriber";
 
@@ -20,25 +19,29 @@ export const useRecordStore = create((set, get) => ({
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: { deviceId },
       });
-      const mediaRecorder = new MediaRecorder(stream);
+
+      const mediaRecorder = new MediaRecorder(stream, {
+        mimeType: "audio/webm",
+      });
+
       const chunks = [];
 
       mediaRecorder.ondataavailable = (e) => {
-        chunks.push(e.data);
+        if (e.data.size > 0) chunks.push(e.data);
       };
 
       mediaRecorder.onstop = async () => {
+        clearInterval(get().intervalId);
+
         const blob = new Blob(chunks, { type: "audio/webm" });
-        
+
         set({ isProcessing: true, status: "processing" });
 
         try {
           const transcript = await processAudio(
             blob,
             { language: get().lang },
-            (step) => {
-              set({ status: step });
-            }
+            (step) => set({ status: step })
           );
 
           set({
@@ -58,12 +61,7 @@ export const useRecordStore = create((set, get) => ({
       mediaRecorder.start();
 
       const intervalId = setInterval(() => {
-        set((state) => {
-          if (state.status !== step) {
-            return { status: step };
-          }
-          return state;
-        });
+        set((state) => ({ timer: state.timer + 1 }));
       }, 1000);
 
       set({
@@ -84,10 +82,11 @@ export const useRecordStore = create((set, get) => ({
   stopRecording: () => {
     const { mediaRecorder, stream, intervalId } = get();
 
-    if (mediaRecorder) mediaRecorder.stop();
-    if (stream) {
-      stream.getTracks().forEach((track) => track.stop());
+    if (mediaRecorder?.state === "recording") {
+      mediaRecorder.stop();
     }
+
+    stream?.getTracks().forEach((track) => track.stop());
     clearInterval(intervalId);
 
     set({
@@ -123,10 +122,10 @@ export const useRecordStore = create((set, get) => ({
       set({ result, isProcessing: false, status: "stored" });
       return result;
     } catch (error) {
-      set({ 
+      set({
         isProcessing: false,
         status: `error: ${error.message}`,
-        result: null
+        result: null,
       });
       throw error;
     }

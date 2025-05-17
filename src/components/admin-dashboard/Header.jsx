@@ -24,6 +24,7 @@ const Header = () => {
     timer % 60,
   ).padStart(2, "0")}`;
 
+
   useEffect(() => {
     const getMicrophones = async () => {
       try {
@@ -44,12 +45,20 @@ const Header = () => {
     getMicrophones();
   }, []);
 
-  const handleResumeClick = () => {
-    isRecording ? stopRecording() : startRecording(selectedMic);
-  };
+  // const handleResumeClick = () => {
+  //   isRecording ? stopRecording() : startRecording(selectedMic);
+  // };
 
   const handleStartClick = () => {
     openRecordModal();
+  };
+
+  const handleResumeClick = () => {
+    startRecording(selectedMic);
+  };
+
+  const handleStopClick = () => {
+    stopRecording();
   };
 
   return (
@@ -95,7 +104,6 @@ const Header = () => {
             </Select>
           </div>
 
-          {/* Conditional Button: Start or Resume/Stop */}
           {!sessionId ? (
             <Button
               onClick={handleStartClick}
@@ -106,12 +114,11 @@ const Header = () => {
             </Button>
           ) : (
             <Button
-              onClick={handleResumeClick}
-              className={`border ${
-                isRecording
+              onClick={isRecording ? handleStopClick : handleResumeClick}
+              className={`border ${isRecording
                   ? "bg-transparent text-red-600 hover:bg-red-600 hover:text-white"
                   : "bg-transparent text-gray-800 hover:bg-gray-800 hover:text-white"
-              }`}
+                }`}
             >
               <Play className="h-4 w-4" />
               <span className="hidden md:inline">
@@ -119,6 +126,8 @@ const Header = () => {
               </span>
             </Button>
           )}
+
+
         </div>
       </div>
     </div>

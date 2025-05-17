@@ -82,25 +82,20 @@ export default function RecordModal() {
   };
 
   // Function to save complete Gladia response to MongoDB
-  const saveTranscriptToDatabase = async (gladiaResponse) => {
-    try {
-       // Debug:
-      console.log("Raw Gladia response:", gladiaResponse, typeof gladiaResponse);
-
-      const sessionId = uuidv4();
-      const response = await fetch('http://127.0.0.1:5000/api/transcript/save', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          session_id: sessionId,
-          therapist_id: "1", // You can replace this with actual therapist ID
-          user_id: "2", // Replace with actual user ID
-          gladia_response: gladiaResponse, // Store the entire Gladia API response
-          language: language
-        }),
-      });
+  const saveTranscriptToDatabase = async (gladiaResponse, sessionId) => {
+  try {
+    console.log("sessionId +=>",sessionId);
+    const response = await fetch('http://127.0.0.1:5000/api/transcript/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        session_id: sessionId,
+        therapist_id: "1",
+        user_id: "2",
+        gladia_response: gladiaResponse,
+        language: language
+      }),
+    });
 
       if (!response.ok) {
         throw new Error('Failed to save transcript');
@@ -115,40 +110,39 @@ export default function RecordModal() {
     }
   };
 
-  const handleFileChange = async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setLoading(true);
-      setTranscript("");
-      try {
-        // Process the audio file using Gladia API
-        const gladiaResponse = await processAudio(
-          file,
-          { language },
-          (step) => console.log(step)
-        );
-        
-        // Extract transcript text for display
-        let transcriptText = "";
-        if (gladiaResponse && gladiaResponse.result && gladiaResponse.result.transcription) {
-          transcriptText = gladiaResponse.result.transcription.full_transcript || 
-                        "Transcript unavailable";
-        } else if (typeof gladiaResponse === 'string') {
-          transcriptText = gladiaResponse;
-        }
-        
-        setTranscript(transcriptText);
-        
-        // Save the complete Gladia response to MongoDB
-        await saveTranscriptToDatabase(gladiaResponse);
-      } catch (error) {
-        console.error("Error processing file:", error.message);
-        setTranscript(`Error: ${error.message}`);
-      } finally {
-        setLoading(false);
+const handleFileChange = async (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    setLoading(true);
+    setTranscript("");
+    const sessionId = uuidv4();
+    setSelectedSession(sessionId); // Store session in frontend state
+
+    try {
+      const gladiaResponse = await processAudio(
+        file,
+        { language },
+        (step) => console.log(step)
+      );
+
+      let transcriptText = "";
+      if (gladiaResponse?.result?.transcription?.full_transcript) {
+        transcriptText = gladiaResponse.result.transcription.full_transcript;
+      } else if (typeof gladiaResponse === 'string') {
+        transcriptText = gladiaResponse;
       }
+
+      setTranscript(transcriptText);
+      await saveTranscriptToDatabase(gladiaResponse, sessionId); // <-- pass it
+    } catch (error) {
+      console.error("Error processing file:", error.message);
+      setTranscript(`Error: ${error.message}`);
+    } finally {
+      setLoading(false);
     }
-  };
+  }
+};
+
 
   const handleStartSession = async () => {
     if (isRecording) {
@@ -187,19 +181,19 @@ export default function RecordModal() {
           variant={mode === "transcribe" ? "default" : "outline"}
           onClick={() => setMode("transcribe")}
         >
-          Transcribe
+          Dictate
         </Button>
         <Button
           variant={mode === "dictate" ? "default" : "outline"}
           onClick={() => setMode("dictate")}
         >
-          Dictate
+          Transcribe
         </Button>
       </div>
 
       {/* Language select */}
       <div className="mb-4 text-center text-base font-medium text-gray-700">
-        {mode === "transcribe" ? "Transcribing" : "Dictating"} in{' '}
+        {mode === "transcribe" ? "Dictating" : "Transcribing"} in{' '}
         <Select value={language} onValueChange={setLanguage}>
           <SelectTrigger className="inline-flex w-fit">
             <SelectValue placeholder="Select language" />
