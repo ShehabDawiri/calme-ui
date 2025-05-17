@@ -144,25 +144,36 @@ const handleFileChange = async (event) => {
 };
 
 
-  const handleStartSession = async () => {
-    if (isRecording) {
+const handleStartSession = async () => {
+  const { isRecording, stopRecording, startRecording, setStatus, setResult } = useRecordStore.getState();
+
+  if (isRecording) {
+    setStatus('processing');
+    try {
       const recordingData = await stopRecording();
-      if (recordingData) {
-        // Save the full recording data to MongoDB
-        try {
-          await saveTranscriptToDatabase(recordingData);
-        } catch (error) {
-          console.error("Error saving transcript:", error);
-        }
+      
+      // Add delay to ensure store is updated
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      const result = useRecordStore.getState().result;
+      
+      if (!result) {
+        throw new Error("No transcript generated - recording might be too short or silent");
       }
-    } else {
-      setLang(language);
-      const newSessionId = uuidv4();
-      setSelectedSession(newSessionId);
-      startRecording();
+      
+      await saveTranscriptToDatabase(result);
+      setStatus('completed');
+    } catch (error) {
+      setStatus(`error: ${error.message}`);
     }
-    closeRecordModal();
-  };
+  } else {
+    setLang(language);
+    const newSessionId = uuidv4();
+    setSelectedSession(newSessionId);
+    startRecording(selectedMicrophone);
+  }
+  closeRecordModal();
+};
 
   return (
     <Modal

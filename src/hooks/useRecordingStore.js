@@ -11,8 +11,11 @@ export const useRecordStore = create((set, get) => ({
   stream: null,
   mediaRecorder: null,
   intervalId: null,
+  audioBlob: null, // <-- store the recorded audio blob for playback
 
   setLang: (lang) => set({ lang }),
+  setStatus: (status) => set({ status }),
+  setResult: (result) => set({ result }),
 
   startRecording: async (deviceId) => {
     try {
@@ -35,14 +38,36 @@ export const useRecordStore = create((set, get) => ({
 
         const blob = new Blob(chunks, { type: "audio/webm" });
 
+        // Save the blob for playback
+        set({ audioBlob: blob });
+
+        // Validate audio size
+        if (blob.size < 1024) {
+          set({
+            isProcessing: false,
+            status: "error: Audio file is too small or empty",
+            result: null,
+          });
+          return;
+        }
+
         set({ isProcessing: true, status: "processing" });
 
         try {
-          const transcript = await processAudio(
+          const response = await processAudio(
             blob,
             { language: get().lang },
             (step) => set({ status: step })
           );
+
+          const transcript =
+            response?.result?.transcription?.full_transcript ||
+            response?.transcript ||
+            response;
+
+          if (!transcript) {
+            throw new Error("No transcript found in API response");
+          }
 
           set({
             result: transcript,
@@ -50,9 +75,10 @@ export const useRecordStore = create((set, get) => ({
             status: "completed",
           });
         } catch (error) {
+          console.error("Processing error:", error);
           set({
             isProcessing: false,
-            status: `error: ${error.message}`,
+            status: `error: ${error.message.replace("Error: ", "")}`,
             result: null,
           });
         }
@@ -72,10 +98,11 @@ export const useRecordStore = create((set, get) => ({
         timer: 0,
         status: "recording",
         result: null,
+        audioBlob: null, // clear previous audioBlob on new recording
       });
     } catch (err) {
       console.error("Error starting recording:", err);
-      set({ status: "error" });
+      set({ status: "error", isRecording: false });
     }
   },
 
@@ -108,6 +135,7 @@ export const useRecordStore = create((set, get) => ({
       stream: null,
       mediaRecorder: null,
       intervalId: null,
+      audioBlob: null,
     });
   },
 
@@ -129,5 +157,5 @@ export const useRecordStore = create((set, get) => ({
       });
       throw error;
     }
-  }
+  },
 }));

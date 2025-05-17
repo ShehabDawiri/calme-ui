@@ -50,8 +50,13 @@ const Header = () => {
   // };
 
   const handleStartClick = () => {
-    openRecordModal();
-  };
+  if (sessionId) {
+    startRecording(selectedMic); // Reuse session
+  } else {
+    openRecordModal(); // This leads to a new session creation
+  }
+};
+
 
   const handleResumeClick = () => {
     startRecording(selectedMic);
